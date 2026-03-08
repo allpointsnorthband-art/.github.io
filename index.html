@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Points North - Electronic Press Kit</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, #000 0%, #1a1a1a 100%);
+            border-bottom: 3px solid #ff6b35;
+        }
+        
+        .logo {
+            font-size: 3.5em;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .tagline {
+            font-size: 1.2em;
+            color: #888;
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+        
+        .quick-links {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .quick-links a {
+            background: rgba(255, 107, 53, 0.1);
+            border: 2px solid #ff6b35;
+            color: #ff6b35;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-links a:hover {
+            background: #ff6b35;
+            color: #000;
+            transform: translateY(-2px);
+        }
+        
+        section {
+            margin: 60px 0;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 107, 53, 0.1);
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ff6b35;
+            border-bottom: 2px solid #ff6b35;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #f7931e;
+        }
+        
+        .bio-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #ccc;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: rgba(255, 107, 53, 0.05);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b35;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 900;
+            color: #ff6b35;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .music-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .music-link {
+            flex: 1;
+            min-width: 200px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: #000;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .music-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            background: rgba(255, 107, 53, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 107, 53, 0.2);
+        }
+        
+        .contact-item strong {
+            color: #ff6b35;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .contact-item a {
+            color: #f7931e;
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            text-decoration: underline;
+        }
+        
+        .genre-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .tag {
+            background: rgba(255, 107, 53, 0.2);
+            color: #ff6b35;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        .placeholder-box {
+            background: rgba(255, 107, 53, 0.05);
+            border: 2px dashed rgba(255, 107, 53, 0.3);
+            padding: 60px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #888;
+        }
+        
+        .download-section {
+            background: rgba(255, 107, 53, 0.05);
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            background: #ff6b35;
+            color: #000;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            margin: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn:hover {
+            background: #f7931e;
+            transform: translateY(-2px);
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        ul li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        ul li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: 900;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            border-top: 1px solid rgba(255, 107, 53, 0.1);
+            margin-top: 60px;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5em;
+            }
+            
+            h2 {
+                font-size: 2em;
+            }
+            
+            section {
+                padding: 20px;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">ALL POINTS NORTH</div>
+        <div class="tagline">Progressive Rock • Netherlands</div>
+        <div class="quick-links">
+            <a href="https://open.spotify.com/artist/02lo7GheOKHi4dcjFhh46B" target="_blank">▶ SPOTIFY</a>
+            <a href="https://allpointsnorth.bandcamp.com" target="_blank">♪ BANDCAMP</a>
+            <a href="https://www.instagram.com/allpointsnorth.band/" target="_blank">📷 INSTAGRAM</a>
+            <a href="https://www.facebook.com/apnlive" target="_blank">f FACEBOOK</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- BIO SECTION -->
+        <section id="bio">
+            <h2>About</h2>
+            <div class="genre-tags">
+                <span class="tag">Progressive Rock</span>
+                <span class="tag">Progressive Metal</span>
+                <span class="tag">Instrumental</span>
+                <span class="tag">Technical</span>
+                <span class="tag">Atmospheric</span>
+            </div>
+            
+            <div class="bio-text">
+                <p style="margin-bottom: 20px;">
+                    <strong>All Points North</strong> is een progressive rock band uit Nederland die complexe composities combineert met emotionele diepte. De band verkent de grenzen van technische muzikaliteit terwijl ze toegankelijke melodieën behoudt die resoneren met zowel prog puristen als nieuwe luisteraars.
+                </p>
+                
+                <p style="margin-bottom: 20px;">
+                    Met invloeden variërend van klassieke progressive rock iconen tot moderne djent en post-metal, creëert All Points North een geluid dat zowel vertrouwd als vernieuwend aanvoelt. Hun muziek wordt gekenmerkt door ingewikkelde ritmische patronen, atmosferische passages en dynamische contrasten die luisteraars meenemen op een sonische reis.
+                </p>
+                
+                <p>
+                    De band is actief in de Nederlandse underground prog scene en bouwt een toegewijde fanbase op door authentieke muziek te maken die artistieke integriteit boven commerciële overwegingen plaatst. All Points North vertegenwoordigt de nieuwe generatie van Nederlandse progressive rock—technisch vaardig, emotioneel oprecht, en niet bang om risico's te nemen.
+                </p>
+            </div>
+
+            <h3>Muzikale Kenmerken</h3>
+            <ul>
+                <li>Complexe time signatures en polyrhythmische structuren</li>
+                <li>Dynamische song opbouw met onverwachte wendingen</li>
+                <li>Blend van heavy riffs en atmosferische passages</li>
+                <li>Instrumentale focus met nadruk op muzikale storytelling</li>
+                <li>Invloeden van Tool, Haken, Tesseract, en Meshuggah</li>
+            </ul>
+        </section>
+
+        <!-- MUSIC SECTION -->
+        <section id="music">
+            <h2>Music</h2>
+            
+            <h3>Stream Nu</h3>
+            <div class="music-links">
+                <a href="https://open.spotify.com/artist/02lo7GheOKHi4dcjFhh46B" target="_blank" class="music-link">
+                    🎵 Spotify
+                </a>
+                <a href="https://allpointsnorth.bandcamp.com" target="_blank" class="music-link">
+                    ♪ Bandcamp
+                </a>
+                <a href="#" class="music-link" onclick="alert('Apple Music link toevoegen'); return false;">
+                    🍎 Apple Music
+                </a>
+                <a href="#" class="music-link" onclick="alert('YouTube link toevoegen'); return false;">
+                    ▶ YouTube
+                </a>
+            </div>
+
+            <h3>Laatste Releases</h3>
+            <div class="placeholder-box">
+                📀 Voeg hier je laatste EP/Album informatie toe<br>
+                <small>Inclusief release datum, tracklist, streaming links</small>
+            </div>
+
+            <h3>Featured Tracks</h3>
+            <div class="placeholder-box">
+                🎸 Embed Spotify/Bandcamp players voor je beste tracks<br>
+                <small>Kies 3-4 songs die je sound het beste representeren</small>
+            </div>
+        </section>
+
+        <!-- LIVE & VIDEO SECTION -->
+        <section id="live">
+            <h2>Live & Video</h2>
+            
+            <h3>Live Performance Video</h3>
+            <div class="placeholder-box">
+                🎥 Voeg hier je beste live performance video toe<br>
+                <small>YouTube embed of Vimeo link - full song of highlight reel</small>
+            </div>
+
+            <h3>Recent & Upcoming Shows</h3>
+            <div class="placeholder-box">
+                📅 Show geschiedenis en aankomende data<br>
+                <small>Datum | Venue | Stad | Type (headliner/support)</small>
+            </div>
+
+            <h3>Live Set Details</h3>
+            <ul>
+                <li><strong>Set Length:</strong> 30-60 minuten (flexibel)</li>
+                <li><strong>Performance Style:</strong> High-energy, technisch precies, visueel engaging</li>
+                <li><strong>Technical Requirements:</strong> Standaard backline, professional PA</li>
+                <li><strong>Stage Setup:</strong> [Aantal] piece band, instrumentatie details</li>
+            </ul>
+        </section>
+
+        <!-- STATS & METRICS -->
+        <section id="stats">
+            <h2>Stats & Reach</h2>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="spotify-listeners">-</span>
+                    <span class="stat-label">Monthly Spotify Listeners</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="social-followers">-</span>
+                    <span class="stat-label">Social Media Followers</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="shows-played">-</span>
+                    <span class="stat-label">Shows Played</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="streams">-</span>
+                    <span class="stat-label">Total Streams</span>
+                </div>
+            </div>
+
+            <h3>Social Media Aanwezigheid</h3>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <strong>Instagram</strong>
+                    <a href="https://www.instagram.com/allpointsnorth.band/" target="_blank">@allpointsnorth.band</a>
+                    <p style="margin-top: 10px; color: #888;">Dagelijkse updates, behind-the-scenes content</p>
+                </div>
+                <div class="contact-item">
+                    <strong>Facebook</strong>
+                    <a href="https://www.facebook.com/apnlive" target="_blank">/apnlive</a>
+                    <p style="margin-top: 10px; color: #888;">Show announcements, community engagement</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRESS & QUOTES -->
+        <section id="press">
+            <h2>Press & Recognition</h2>
+            
+            <div class="placeholder-box">
+                📰 Voeg hier press quotes, reviews, features toe<br>
+                <small>"Quote van recensie" - Bron/Publicatie<br>
+                Ideaal: 3-5 sterke quotes van blogs, magazines, radio</small>
+            </div>
+
+            <h3>Media Coverage</h3>
+            <ul>
+                <li>[Datum] - [Publicatie] - [Type coverage: interview/review/feature]</li>
+                <li>[Link naar artikel indien online]</li>
+                <li>Voeg coverage toe van 3voor12, DPRP, Background Magazine, etc.</li>
+            </ul>
+        </section>
+
+        <!-- PHOTOS -->
+        <section id="photos">
+            <h2>Press Photos</h2>
+            
+            <div class="placeholder-box">
+                📸 High-resolution press photos (min. 300 DPI)<br>
+                <small>Band foto, live action shots, promo materiaal<br>
+                Gebruik downloadable links (Dropbox, Google Drive, WeTransfer)</small>
+            </div>
+
+            <div class="download-section">
+                <h3>Download Press Kit</h3>
+                <p style="margin-bottom: 20px; color: #ccc;">Alle promotional materialen in één package:</p>
+                <a href="#" class="download-btn" onclick="alert('Link naar high-res photos folder'); return false;">Download Photos (High-Res)</a>
+                <a href="#" class="download-btn" onclick="alert('Link naar complete EPK PDF'); return false;">Download Complete EPK (PDF)</a>
+                <a href="#" class="download-btn" onclick="alert('Link naar logos & artwork'); return false;">Download Logos & Artwork</a>
+            </div>
+        </section>
+
+        <!-- TECHNICAL RIDER -->
+        <section id="technical">
+            <h2>Technical Rider</h2>
+            
+            <h3>Stage Requirements</h3>
+            <div class="placeholder-box">
+                🎛️ Stage Plot & Input List<br>
+                <small>Downloadable PDF met complete tech rider<br>
+                Include: stage dimensions, backline, monitoring, lighting</small>
+            </div>
+
+            <h3>Basic Requirements</h3>
+            <ul>
+                <li><strong>Minimum Stage Size:</strong> [meters] x [meters]</li>
+                <li><strong>Power Requirements:</strong> [aantal] outlets, grounded</li>
+                <li><strong>Backline Needed:</strong> [list instruments/amps needed from venue]</li>
+                <li><strong>Monitoring:</strong> [aantal] monitor mixes preferred</li>
+                <li><strong>Load-In Time:</strong> [tijd] voor soundcheck</li>
+                <li><strong>Sound Engineer:</strong> We kunnen eigen engineer meebrengen indien gewenst</li>
+            </ul>
+
+            <div style="margin-top: 30px;">
+                <a href="#" class="download-btn" onclick="alert('Link naar volledige tech rider PDF'); return false;">Download Complete Tech Rider</a>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+            <h2>Contact & Booking</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <strong>Booking Inquiries</strong>
+                    <a href="mailto:booking@allpointsnorth.band">booking@allpointsnorth.band</a>
+                    <p style="margin-top: 10px; color: #888;">Voor show bookings, tour support, festival slots</p>
+                </div>
+                
+                <div class="contact-item">
+                    <strong>Press & Media</strong>
+                    <a href="mailto:press@allpointsnorth.band">press@allpointsnorth.band</a>
+                    <p style="margin-top: 10px; color: #888;">Interviews, reviews, promotional materials</p>
+                </div>
+                
+                <div class="contact-item">
+                    <strong>General Contact</strong>
+                    <a href="mailto:info@allpointsnorth.band">info@allpointsnorth.band</a>
+                    <p style="margin-top: 10px; color: #888;">Algemene vragen, collaboration inquiries</p>
+                </div>
+                
+                <div class="contact-item">
+                    <strong>Management</strong>
+                    <p style="color: #ccc;">[Naam Manager/Band Contact]</p>
+                    <a href="tel:+31XXXXXXXXX">+31 XXX XXX XXX</a>
+                    <p style="margin-top: 10px; color: #888;">Direct contact voor urgente zaken</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px;">Response Time</h3>
+            <p style="color: #ccc;">We streven ernaar om binnen 24-48 uur te reageren op alle inquiries. Voor urgente bookings, bel direct.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 All Points North. All rights reserved.</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">Progressive Rock from the Netherlands</p>
+        <p style="margin-top: 20px;">
+            <a href="https://www.instagram.com/allpointsnorth.band/" style="color: #ff6b35; text-decoration: none; margin: 0 10px;">Instagram</a> |
+            <a href="https://www.facebook.com/apnlive" style="color: #ff6b35; text-decoration: none; margin: 0 10px;">Facebook</a> |
+            <a href="https://open.spotify.com/artist/02lo7GheOKHi4dcjFhh46B" style="color: #ff6b35; text-decoration: none; margin: 0 10px;">Spotify</a> |
+            <a href="https://allpointsnorth.bandcamp.com" style="color: #ff6b35; text-decoration: none; margin: 0 10px;">Bandcamp</a>
+        </p>
+    </footer>
+
+    <script>
+        // Animate stats on load
+        function animateValue(id, start, end, duration) {
+            const obj = document.getElementById(id);
+            if (!obj) return;
+            
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                obj.innerHTML = value.toLocaleString();
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Update these with actual numbers
+        window.addEventListener('load', () => {
+            // Replace with real stats
+            animateValue('spotify-listeners', 0, 500, 2000);
+            animateValue('social-followers', 0, 800, 2000);
+            animateValue('shows-played', 0, 15, 1500);
+            animateValue('streams', 0, 5000, 2500);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = this.getAttribute('href');
+                if (target !== '#') {
+                    e.preventDefault();
+                    const element = document.querySelector(target);
+                    if (element) {
+                        element.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
