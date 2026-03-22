@@ -262,23 +262,326 @@
             border-top: 1px solid rgba(255, 107, 53, 0.1);
             margin-top: 60px;
         }
-        
+
+        /* ===================== */
+        /* PHOTO GALLERY STYLES  */
+        /* ===================== */
+
+        .photo-filter-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .filter-btn {
+            background: rgba(255, 107, 53, 0.1);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            color: #888;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #ff6b35;
+            border-color: #ff6b35;
+            color: #000;
+        }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .photo-card {
+            position: relative;
+            border-radius: 6px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: rgba(255, 107, 53, 0.04);
+            border: 1px solid rgba(255, 107, 53, 0.1);
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(255, 107, 53, 0.25);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .photo-card:hover img {
+            transform: scale(1.04);
+        }
+
+        /* Overlay on hover */
+        .photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 14px;
+        }
+
+        .photo-card:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        .photo-overlay-content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+
+        .photo-caption {
+            font-size: 0.8em;
+            color: #ddd;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .photo-download-btn {
+            flex-shrink: 0;
+            background: #ff6b35;
+            color: #000;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: background 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .photo-download-btn:hover {
+            background: #f7931e;
+        }
+
+        /* Wide/featured card spans 2 columns */
+        .photo-card.featured {
+            grid-column: span 2;
+            aspect-ratio: 16/9;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .lightbox.open {
+            display: flex;
+        }
+
+        .lightbox-inner {
+            position: relative;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        .lightbox-img {
+            width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 6px;
+            display: block;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -44px;
+            right: 0;
+            background: none;
+            border: none;
+            color: #ff6b35;
+            font-size: 2em;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .lightbox-caption {
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .lightbox-caption-text {
+            color: #aaa;
+            font-size: 0.9em;
+        }
+
+        .lightbox-download {
+            background: #ff6b35;
+            color: #000;
+            padding: 10px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9em;
+            white-space: nowrap;
+            transition: background 0.2s ease;
+        }
+
+        .lightbox-download:hover {
+            background: #f7931e;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 107, 53, 0.15);
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            color: #ff6b35;
+            font-size: 1.8em;
+            padding: 10px 16px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background 0.2s ease;
+            line-height: 1;
+        }
+
+        .lightbox-nav:hover {
+            background: rgba(255, 107, 53, 0.35);
+        }
+
+        .lightbox-nav.prev { left: -60px; }
+        .lightbox-nav.next { right: -60px; }
+
+        .photo-empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .photo-empty-state .icon {
+            font-size: 3em;
+            margin-bottom: 16px;
+            opacity: 0.4;
+        }
+
+        .photo-empty-state p {
+            max-width: 420px;
+            margin: 0 auto;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        .photo-empty-state code {
+            background: rgba(255,107,53,0.1);
+            color: #ff6b35;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+
+        .bulk-download-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 24px;
+            padding: 20px 24px;
+            background: rgba(255, 107, 53, 0.05);
+            border: 1px solid rgba(255, 107, 53, 0.15);
+            border-radius: 8px;
+        }
+
+        .bulk-download-bar p {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .bulk-download-bar p strong {
+            color: #ccc;
+        }
+
+        .bulk-btns {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .bulk-btn {
+            background: #ff6b35;
+            color: #000;
+            padding: 11px 24px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88em;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .bulk-btn:hover {
+            background: #f7931e;
+            transform: translateY(-2px);
+        }
+
+        .bulk-btn.secondary {
+            background: transparent;
+            border: 2px solid #ff6b35;
+            color: #ff6b35;
+        }
+
+        .bulk-btn.secondary:hover {
+            background: rgba(255,107,53,0.1);
+        }
+
         @media (max-width: 768px) {
-            .logo {
-                font-size: 2.5em;
-            }
-            
-            h2 {
-                font-size: 2em;
-            }
-            
-            section {
-                padding: 20px;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
+            .logo { font-size: 2.5em; }
+            h2 { font-size: 2em; }
+            section { padding: 20px; }
+            .stats { grid-template-columns: 1fr; }
+            .photo-grid { grid-template-columns: repeat(2, 1fr); }
+            .photo-card.featured { grid-column: span 2; }
+            .lightbox-nav.prev { left: 0; }
+            .lightbox-nav.next { right: 0; }
+        }
+
+        @media (max-width: 480px) {
+            .photo-grid { grid-template-columns: 1fr; }
+            .photo-card.featured { grid-column: span 1; aspect-ratio: 4/3; }
         }
     </style>
 </head>
@@ -310,11 +613,9 @@
                 <p style="margin-bottom: 20px;">
                     <strong>All Points North</strong> is een progressive rock band uit Nederland die complexe composities combineert met emotionele diepte. De band verkent de grenzen van technische muzikaliteit terwijl ze toegankelijke melodieën behoudt die resoneren met zowel prog puristen als nieuwe luisteraars.
                 </p>
-                
                 <p style="margin-bottom: 20px;">
                     Met invloeden variërend van klassieke progressive rock iconen tot moderne djent en post-metal, creëert All Points North een geluid dat zowel vertrouwd als vernieuwend aanvoelt. Hun muziek wordt gekenmerkt door ingewikkelde ritmische patronen, atmosferische passages en dynamische contrasten die luisteraars meenemen op een sonische reis.
                 </p>
-                
                 <p>
                     De band is actief in de Nederlandse underground prog scene en bouwt een toegewijde fanbase op door authentieke muziek te maken die artistieke integriteit boven commerciële overwegingen plaatst. All Points North vertegenwoordigt de nieuwe generatie van Nederlandse progressive rock—technisch vaardig, emotioneel oprecht, en niet bang om risico's te nemen.
                 </p>
@@ -336,31 +637,21 @@
             
             <h3>Stream Nu</h3>
             <div class="music-links">
-                <a href="https://open.spotify.com/artist/02lo7GheOKHi4dcjFhh46B" target="_blank" class="music-link">
-                    🎵 Spotify
-                </a>
-                <a href="https://allpointsnorth.bandcamp.com" target="_blank" class="music-link">
-                    ♪ Bandcamp
-                </a>
-                <a href="#" class="music-link" onclick="alert('Apple Music link toevoegen'); return false;">
-                    🍎 Apple Music
-                </a>
-                <a href="#" class="music-link" onclick="alert('YouTube link toevoegen'); return false;">
-                    ▶ YouTube
-                </a>
+                <a href="https://open.spotify.com/artist/02lo7GheOKHi4dcjFhh46B" target="_blank" class="music-link">🎵 Spotify</a>
+                <a href="https://allpointsnorth.bandcamp.com" target="_blank" class="music-link">♪ Bandcamp</a>
+                <a href="#" class="music-link" onclick="alert('Apple Music link toevoegen'); return false;">🍎 Apple Music</a>
+                <a href="#" class="music-link" onclick="alert('YouTube link toevoegen'); return false;">▶ YouTube</a>
             </div>
 
             <h3>Laatste Releases</h3>
             <div class="placeholder-box">
                 📀 Embracer - EP<br>
-                <small>Released January 2026. Contains 4 tracks: Sargassum | Ready For The Fall | Suffer In Silence | Here I Am . 
-                https://open.spotify.com/album/7jZxYEhxU0zuyqPcu0D2Zp?si=2dIUYMeiTPS5CDZ3U03OSQ </small>
+                <small>Released January 2026. Contains 4 tracks: Sargassum | Ready For The Fall | Suffer In Silence | Here I Am.</small>
             </div>
 
             <h3>Featured Tracks</h3>
             <div class="placeholder-box">
-                🎸 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/7jZxYEhxU0zuyqPcu0D2Zp?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe><br>
-                
+                🎸 <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/7jZxYEhxU0zuyqPcu0D2Zp?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </section>
 
@@ -370,15 +661,11 @@
             
             <h3>Live Performance Video</h3>
             <div class="placeholder-box">
-                🎥 <iframe width="560" height="315" src="https://www.youtube.com/embed/cRNdQjr1ueA?si=SBESVz_q8fTzEaQ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br>
-                
+                🎥 <iframe width="560" height="315" src="https://www.youtube.com/embed/cRNdQjr1ueA?si=SBESVz_q8fTzEaQ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
             <h3>Recent & Upcoming Shows</h3>
-            <div class="placeholder-box">
-                📅 No dates yet!<br>
-            
-            </div>
+            <div class="placeholder-box">📅 No dates yet!</div>
 
             <h3>Live Set Details</h3>
             <ul>
@@ -392,7 +679,6 @@
         <!-- STATS & METRICS -->
         <section id="stats">
             <h2>Stats & Reach</h2>
-            
             <div class="stats">
                 <div class="stat-card">
                     <span class="stat-number" id="spotify-listeners">-</span>
@@ -430,13 +716,10 @@
         <!-- PRESS & QUOTES -->
         <section id="press">
             <h2>Press & Recognition</h2>
-            
             <div class="placeholder-box">
                 📰 Voeg hier press quotes, reviews, features toe<br>
-                <small>"Quote van recensie" - Bron/Publicatie<br>
-                Ideaal: 3-5 sterke quotes van blogs, magazines, radio</small>
+                <small>"Quote van recensie" - Bron/Publicatie</small>
             </div>
-
             <h3>Media Coverage</h3>
             <ul>
                 <li>[Datum] - [Publicatie] - [Type coverage: interview/review/feature]</li>
@@ -445,34 +728,152 @@
             </ul>
         </section>
 
-        <!-- PHOTOS -->
+        <!-- PHOTOS — UPDATED SECTION -->
         <section id="photos">
             <h2>Photos</h2>
-            
-            <div class="placeholder-box">
-                📸 https://github.com/allpointsnorthband-art/.github.io/tree/main/photos<br>
+
+            <!-- Filter bar -->
+            <div class="photo-filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="live">Live</button>
+                <button class="filter-btn" data-filter="promo">Promo</button>
+                <button class="filter-btn" data-filter="studio">Studio</button>
             </div>
 
-            <div class="download-section">
-                <h3>Download Press Kit</h3>
-                <p style="margin-bottom: 20px; color: #ccc;">Alle promotional materialen in één package:</p>
-                <a href="#" class="download-btn" onclick="alert(https://github.com/allpointsnorthband-art/.github.io/tree/main/photos); return false;">Download Photos (High-Res)</a>
-                <a href="#" class="download-btn" onclick="alert('Link naar complete EPK PDF'); return false;">Download Complete EPK (PDF)</a>
-                <a href="#" class="download-btn" onclick="alert('Link naar logos & artwork'); return false;">Download Logos & Artwork</a>
+            <!-- 
+                HOW TO ADD PHOTOS:
+                1. Upload your images to the /photos/ folder in this repo.
+                2. Copy one of the <div class="photo-card"> blocks below.
+                3. Set the src to "photos/your-filename.jpg"
+                4. Set the download href to the same path.
+                5. Set data-category to "live", "promo", or "studio".
+                6. Update the caption text.
+
+                The first card uses class="photo-card featured" to span 2 columns.
+                Remove "featured" to make it a regular square card.
+            -->
+
+            <div class="photo-grid" id="photoGrid">
+
+                <!-- EXAMPLE CARD 1 — Featured (wide, spans 2 cols) -->
+                <!-- Remove this card and replace with real photos -->
+                <div class="photo-card featured" data-category="promo" data-index="0">
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#444;font-size:0.85em;">
+                        <div style="font-size:2.5em;opacity:0.3;">📸</div>
+                        <div>photos/apn-promo-wide.jpg</div>
+                    </div>
+                    <div class="photo-overlay">
+                        <div class="photo-overlay-content">
+                            <span class="photo-caption">Promo – 2025</span>
+                            <a href="photos/apn-promo-wide.jpg" download class="photo-download-btn">↓ Download</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXAMPLE CARD 2 -->
+                <div class="photo-card" data-category="promo" data-index="1">
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#444;font-size:0.85em;">
+                        <div style="font-size:2em;opacity:0.3;">📸</div>
+                        <div>photos/apn-promo-01.jpg</div>
+                    </div>
+                    <div class="photo-overlay">
+                        <div class="photo-overlay-content">
+                            <span class="photo-caption">Promo – 2025</span>
+                            <a href="photos/apn-promo-01.jpg" download class="photo-download-btn">↓ Download</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXAMPLE CARD 3 -->
+                <div class="photo-card" data-category="live" data-index="2">
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#444;font-size:0.85em;">
+                        <div style="font-size:2em;opacity:0.3;">📸</div>
+                        <div>photos/apn-live-01.jpg</div>
+                    </div>
+                    <div class="photo-overlay">
+                        <div class="photo-overlay-content">
+                            <span class="photo-caption">Live – Venue 2025</span>
+                            <a href="photos/apn-live-01.jpg" download class="photo-download-btn">↓ Download</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXAMPLE CARD 4 -->
+                <div class="photo-card" data-category="live" data-index="3">
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#444;font-size:0.85em;">
+                        <div style="font-size:2em;opacity:0.3;">📸</div>
+                        <div>photos/apn-live-02.jpg</div>
+                    </div>
+                    <div class="photo-overlay">
+                        <div class="photo-overlay-content">
+                            <span class="photo-caption">Live – Venue 2025</span>
+                            <a href="photos/apn-live-02.jpg" download class="photo-download-btn">↓ Download</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXAMPLE CARD 5 -->
+                <div class="photo-card" data-category="studio" data-index="4">
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#444;font-size:0.85em;">
+                        <div style="font-size:2em;opacity:0.3;">📸</div>
+                        <div>photos/apn-studio-01.jpg</div>
+                    </div>
+                    <div class="photo-overlay">
+                        <div class="photo-overlay-content">
+                            <span class="photo-caption">Studio – Recording 2026</span>
+                            <a href="photos/apn-studio-01.jpg" download class="photo-download-btn">↓ Download</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- EXAMPLE CARD 6 -->
+                <div class="photo-card" data-category="studio" data-index="5">
+                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#444;font-size:0.85em;">
+                        <div style="font-size:2em;opacity:0.3;">📸</div>
+                        <div>photos/apn-studio-02.jpg</div>
+                    </div>
+                    <div class="photo-overlay">
+                        <div class="photo-overlay-content">
+                            <span class="photo-caption">Studio – Recording 2026</span>
+                            <a href="photos/apn-studio-02.jpg" download class="photo-download-btn">↓ Download</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /photo-grid -->
+
+            <!-- Bulk download bar -->
+            <div class="bulk-download-bar">
+                <p><strong>Press use:</strong> All photos are free to use for editorial and promotional purposes. Credit: All Points North.</p>
+                <div class="bulk-btns">
+                    <a href="https://github.com/allpointsnorthband-art/allpointsnorthband-art.github.io/archive/refs/heads/main.zip" class="bulk-btn">↓ Download All Photos (ZIP)</a>
+                    <a href="mailto:press@allpointsnorth.band" class="bulk-btn secondary">📧 Request Hi-Res</a>
+                </div>
             </div>
         </section>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <div class="lightbox-inner">
+                <button class="lightbox-close" id="lightboxClose">✕</button>
+                <button class="lightbox-nav prev" id="lightboxPrev">‹</button>
+                <button class="lightbox-nav next" id="lightboxNext">›</button>
+                <img src="" alt="" class="lightbox-img" id="lightboxImg">
+                <div class="lightbox-caption">
+                    <span class="lightbox-caption-text" id="lightboxCaption"></span>
+                    <a href="#" download class="lightbox-download" id="lightboxDownload">↓ Download Hi-Res</a>
+                </div>
+            </div>
+        </div>
 
         <!-- TECHNICAL RIDER -->
         <section id="technical">
             <h2>Technical Rider</h2>
-            
             <h3>Stage Requirements</h3>
             <div class="placeholder-box">
                 🎛️ Stage Plot & Input List<br>
-                <small>Downloadable PDF met complete tech rider<br>
-                Include: stage dimensions, backline, monitoring, lighting</small>
+                <small>Downloadable PDF met complete tech rider</small>
             </div>
-
             <h3>Basic Requirements</h3>
             <ul>
                 <li><strong>Minimum Stage Size:</strong> [meters] x [meters]</li>
@@ -482,7 +883,6 @@
                 <li><strong>Load-In Time:</strong> [tijd] voor soundcheck</li>
                 <li><strong>Sound Engineer:</strong> We kunnen eigen engineer meebrengen indien gewenst</li>
             </ul>
-
             <div style="margin-top: 30px;">
                 <a href="#" class="download-btn" onclick="alert('Link naar volledige tech rider PDF'); return false;">Download Complete Tech Rider</a>
             </div>
@@ -491,26 +891,22 @@
         <!-- CONTACT -->
         <section id="contact">
             <h2>Contact & Booking</h2>
-            
             <div class="contact-grid">
                 <div class="contact-item">
                     <strong>Booking Inquiries</strong>
                     <a href="mailto:booking@allpointsnorth.band">booking@allpointsnorth.band</a>
                     <p style="margin-top: 10px; color: #888;">Voor show bookings, tour support, festival slots</p>
                 </div>
-                
                 <div class="contact-item">
                     <strong>Press & Media</strong>
                     <a href="mailto:press@allpointsnorth.band">press@allpointsnorth.band</a>
                     <p style="margin-top: 10px; color: #888;">Interviews, reviews, promotional materials</p>
                 </div>
-                
                 <div class="contact-item">
                     <strong>General Contact</strong>
                     <a href="mailto:info@allpointsnorth.band">info@allpointsnorth.band</a>
                     <p style="margin-top: 10px; color: #888;">Algemene vragen, collaboration inquiries</p>
                 </div>
-                
                 <div class="contact-item">
                     <strong>Management</strong>
                     <p style="color: #ccc;">[Naam Manager/Band Contact]</p>
@@ -518,7 +914,6 @@
                     <p style="margin-top: 10px; color: #888;">Direct contact voor urgente zaken</p>
                 </div>
             </div>
-
             <h3 style="margin-top: 40px;">Response Time</h3>
             <p style="color: #ccc;">We streven ernaar om binnen 24-48 uur te reageren op alle inquiries. Voor urgente bookings, bel direct.</p>
         </section>
@@ -536,47 +931,123 @@
     </footer>
 
     <script>
-        // Animate stats on load
+        // ── Stats animation ──
         function animateValue(id, start, end, duration) {
             const obj = document.getElementById(id);
             if (!obj) return;
-            
             let startTimestamp = null;
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                const value = Math.floor(progress * (end - start) + start);
-                obj.innerHTML = value.toLocaleString();
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
+                obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
+                if (progress < 1) window.requestAnimationFrame(step);
             };
             window.requestAnimationFrame(step);
         }
-
-        // Update these with actual numbers
         window.addEventListener('load', () => {
-            // Replace with real stats
             animateValue('spotify-listeners', 0, 500, 2000);
             animateValue('social-followers', 0, 800, 2000);
             animateValue('shows-played', 0, 15, 1500);
             animateValue('streams', 0, 5000, 2500);
         });
 
-        // Smooth scrolling for anchor links
+        // ── Smooth scroll ──
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const target = this.getAttribute('href');
                 if (target !== '#') {
                     e.preventDefault();
-                    const element = document.querySelector(target);
-                    if (element) {
-                        element.scrollIntoView({
-                            behavior: 'smooth'
-                        });
-                    }
+                    const el = document.querySelector(target);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        });
+
+        // ── Photo filter ──
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const photoCards = document.querySelectorAll('.photo-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                photoCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // ── Lightbox ──
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const lightboxCaption = document.getElementById('lightboxCaption');
+        const lightboxDownload = document.getElementById('lightboxDownload');
+        let currentIndex = 0;
+        let visibleCards = [];
+
+        function getVisibleCards() {
+            return [...document.querySelectorAll('.photo-card')].filter(c => c.style.display !== 'none');
+        }
+
+        function openLightbox(index) {
+            visibleCards = getVisibleCards();
+            currentIndex = index;
+            updateLightbox();
+            lightbox.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function updateLightbox() {
+            const card = visibleCards[currentIndex];
+            if (!card) return;
+            const img = card.querySelector('img');
+            const caption = card.querySelector('.photo-caption');
+            const dlBtn = card.querySelector('.photo-download-btn');
+            if (img) {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt || '';
+            }
+            lightboxCaption.textContent = caption ? caption.textContent : '';
+            lightboxDownload.href = dlBtn ? dlBtn.href : '#';
+        }
+
+        photoCards.forEach((card, i) => {
+            card.addEventListener('click', (e) => {
+                // Don't open lightbox when clicking the download button
+                if (e.target.closest('.photo-download-btn')) return;
+                visibleCards = getVisibleCards();
+                const idx = visibleCards.indexOf(card);
+                if (idx > -1) openLightbox(idx);
+            });
+        });
+
+        document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+        document.getElementById('lightboxPrev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + visibleCards.length) % visibleCards.length;
+            updateLightbox();
+        });
+        document.getElementById('lightboxNext').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % visibleCards.length;
+            updateLightbox();
+        });
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + visibleCards.length) % visibleCards.length; updateLightbox(); }
+            if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % visibleCards.length; updateLightbox(); }
         });
     </script>
 </body>
