@@ -639,8 +639,8 @@
             <div class="music-links">
                 <a href="https://open.spotify.com/artist/02lo7GheOKHi4dcjFhh46B" target="_blank" class="music-link">🎵 Spotify</a>
                 <a href="https://allpointsnorth.bandcamp.com" target="_blank" class="music-link">♪ Bandcamp</a>
-                <a href="#" class="music-link" onclick="alert('https://music.apple.com/us/artist/all-points-north/1671344314'); return false;">🍎 Apple Music</a>
-                <a href="#" class="music-link" onclick="alert('https://www.youtube.com/channel/UC21YAJsZDA_rvj9bPUkJR_A'); return false;">▶ YouTube</a>
+                <a href="#" class="music-link" onclick="alert('Apple Music link toevoegen'); return false;">🍎 Apple Music</a>
+                <a href="#" class="music-link" onclick="alert('YouTube link toevoegen'); return false;">▶ YouTube</a>
             </div>
 
             <h3>Laatste Releases</h3>
@@ -660,8 +660,15 @@
             <h2>Live & Video</h2>
             
             <h3>Live Performance Video</h3>
-            <div class="placeholder-box">
-                🎥 <iframe width="560" height="315" src="https://youtu.be/cRNdQjr1ueA?si=mlBC7vr-ue_GQPHN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:8px; margin:20px 0;">
+                <iframe
+                    style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+                    src="https://www.youtube.com/embed/cRNdQjr1ueA"
+                    title="All Points North – Live Performance"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen>
+                </iframe>
             </div>
 
             <h3>Recent & Upcoming Shows</h3>
@@ -681,19 +688,19 @@
             <h2>Stats & Reach</h2>
             <div class="stats">
                 <div class="stat-card">
-                    <span class="stat-number" id="spotify-listeners">100+</span>
+                    <span class="stat-number" id="spotify-listeners">-</span>
                     <span class="stat-label">Monthly Spotify Listeners</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number" id="social-followers">100+</span>
+                    <span class="stat-number" id="social-followers">-</span>
                     <span class="stat-label">Social Media Followers</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number" id="shows-played">60</span>
+                    <span class="stat-number" id="shows-played">-</span>
                     <span class="stat-label">Shows Played</span>
                 </div>
                 <div class="stat-card">
-                    <span class="stat-number" id="streams">5000+</span>
+                    <span class="stat-number" id="streams">-</span>
                     <span class="stat-label">Total Streams</span>
                 </div>
             </div>
@@ -737,7 +744,6 @@
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="live">Live</button>
                 <button class="filter-btn" data-filter="promo">Promo</button>
-                <button class="filter-btn" data-filter="studio">Studio</button>
             </div>
 
             <!-- 
@@ -755,87 +761,57 @@
 
             <div class="photo-grid" id="photoGrid">
 
-                <!-- EXAMPLE CARD 1 — Featured (wide, spans 2 cols) -->
-                <!-- Remove this card and replace with real photos -->
-                <div class="photo-card featured" data-category="promo" data-index="0">
-                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#444;font-size:0.85em;">
-                        <div style="font-size:2.5em;opacity:0.3;">📸</div>
-                        <div>photos/apn-promo-wide.jpg</div>
-                    </div>
+                <!-- CARD 1 — Featured wide -->
+                <div class="photo-card featured" data-category="live" data-index="0">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/007.JPG" alt="All Points North live – 007">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
-                            <span class="photo-caption">Promo – 2025</span>
-                            <a href="photos/apn-promo-wide.jpg" download class="photo-download-btn">↓ Download</a>
+                            <span class="photo-caption">Live – All Points North</span>
+                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/007.JPG" download="APN-007.JPG" class="photo-download-btn">↓ Download</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- EXAMPLE CARD 2 -->
-                <div class="photo-card" data-category="promo" data-index="1">
-                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#444;font-size:0.85em;">
-                        <div style="font-size:2em;opacity:0.3;">📸</div>
-                        <div>photos/apn-promo-01.jpg</div>
-                    </div>
+                <!-- CARD 2 -->
+                <div class="photo-card" data-category="live" data-index="1">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/016.JPG" alt="All Points North live – 016">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
-                            <span class="photo-caption">Promo – 2025</span>
-                            <a href="photos/apn-promo-01.jpg" download class="photo-download-btn">↓ Download</a>
+                            <span class="photo-caption">Live – All Points North</span>
+                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/016.JPG" download="APN-016.JPG" class="photo-download-btn">↓ Download</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- EXAMPLE CARD 3 -->
+                <!-- CARD 3 -->
                 <div class="photo-card" data-category="live" data-index="2">
-                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#444;font-size:0.85em;">
-                        <div style="font-size:2em;opacity:0.3;">📸</div>
-                        <div>photos/apn-live-01.jpg</div>
-                    </div>
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/018.JPG" alt="All Points North live – 018">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
-                            <span class="photo-caption">Live – Venue 2025</span>
-                            <a href="photos/apn-live-01.jpg" download class="photo-download-btn">↓ Download</a>
+                            <span class="photo-caption">Live – All Points North</span>
+                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/018.JPG" download="APN-018.JPG" class="photo-download-btn">↓ Download</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- EXAMPLE CARD 4 -->
+                <!-- CARD 4 -->
                 <div class="photo-card" data-category="live" data-index="3">
-                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#444;font-size:0.85em;">
-                        <div style="font-size:2em;opacity:0.3;">📸</div>
-                        <div>photos/apn-live-02.jpg</div>
-                    </div>
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/022.JPG" alt="All Points North live – 022">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
-                            <span class="photo-caption">Live – Venue 2025</span>
-                            <a href="photos/apn-live-02.jpg" download class="photo-download-btn">↓ Download</a>
+                            <span class="photo-caption">Live – All Points North</span>
+                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/022.JPG" download="APN-022.JPG" class="photo-download-btn">↓ Download</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- EXAMPLE CARD 5 -->
-                <div class="photo-card" data-category="studio" data-index="4">
-                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#444;font-size:0.85em;">
-                        <div style="font-size:2em;opacity:0.3;">📸</div>
-                        <div>photos/apn-studio-01.jpg</div>
-                    </div>
+                <!-- CARD 5 -->
+                <div class="photo-card" data-category="live" data-index="4">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/023.JPG" alt="All Points North live – 023">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
-                            <span class="photo-caption">Studio – Recording 2026</span>
-                            <a href="photos/apn-studio-01.jpg" download class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- EXAMPLE CARD 6 -->
-                <div class="photo-card" data-category="studio" data-index="5">
-                    <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;color:#444;font-size:0.85em;">
-                        <div style="font-size:2em;opacity:0.3;">📸</div>
-                        <div>photos/apn-studio-02.jpg</div>
-                    </div>
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Studio – Recording 2026</span>
-                            <a href="photos/apn-studio-02.jpg" download class="photo-download-btn">↓ Download</a>
+                            <span class="photo-caption">Live – All Points North</span>
+                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/023.JPG" download="APN-023.JPG" class="photo-download-btn">↓ Download</a>
                         </div>
                     </div>
                 </div>
@@ -847,7 +823,7 @@
                 <p><strong>Press use:</strong> All photos are free to use for editorial and promotional purposes. Credit: All Points North.</p>
                 <div class="bulk-btns">
                     <a href="https://github.com/allpointsnorthband-art/allpointsnorthband-art.github.io/archive/refs/heads/main.zip" class="bulk-btn">↓ Download All Photos (ZIP)</a>
-                    <a href="mailto:press@allpointsnorth.band" class="bulk-btn secondary">📧 Request Hi-Res</a>
+                    <a href="/cdn-cgi/l/email-protection#2e5e5c4b5d5d6e4f42425e4147405a5d40415c5a46004c4f404a" class="bulk-btn secondary">📧 Request Hi-Res</a>
                 </div>
             </div>
         </section>
@@ -869,22 +845,81 @@
         <!-- TECHNICAL RIDER -->
         <section id="technical">
             <h2>Technical Rider</h2>
-            <h3>Stage Requirements</h3>
-            <div class="placeholder-box">
-                🎛️ Stage Plot & Input List<br>
-                <small>Downloadable PDF met complete tech rider</small>
+
+            <h3>Input List (Priklijst)</h3>
+            <div style="overflow-x:auto; margin: 20px 0;">
+                <table style="width:100%; border-collapse:collapse; font-size:0.92em;">
+                    <thead>
+                        <tr style="background:rgba(255,107,53,0.15); color:#ff6b35;">
+                            <th style="padding:10px 14px; text-align:left; border-bottom:2px solid rgba(255,107,53,0.3);">Kanaal</th>
+                            <th style="padding:10px 14px; text-align:left; border-bottom:2px solid rgba(255,107,53,0.3);">Instrument</th>
+                            <th style="padding:10px 14px; text-align:left; border-bottom:2px solid rgba(255,107,53,0.3);">Mic/DI</th>
+                            <th style="padding:10px 14px; text-align:left; border-bottom:2px solid rgba(255,107,53,0.3);">Extra info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">1</td><td style="padding:9px 14px;">Kick</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">2</td><td style="padding:9px 14px;">Snare 1</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">3</td><td style="padding:9px 14px;">Snare 2</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">4</td><td style="padding:9px 14px;">Hi-Hat</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">5</td><td style="padding:9px 14px;">Tom 1</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">6</td><td style="padding:9px 14px;">Tom 2</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">7</td><td style="padding:9px 14px;">Tom 3</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">8</td><td style="padding:9px 14px;">Overhead 1</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">9</td><td style="padding:9px 14px;">Overhead 2</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">10</td><td style="padding:9px 14px;">Gitaar 1</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">11</td><td style="padding:9px 14px;">Gitaar 2</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">12</td><td style="padding:9px 14px;">Bas</td><td style="padding:9px 14px; color:#f7931e;">1 DI</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">13</td><td style="padding:9px 14px;">Zang 1 (zanger)</td><td style="padding:9px 14px; color:#f7931e;">1 DI</td><td style="padding:9px 14px; color:#888;">I.v.m. zangeffect (TC Helicon Play) extra mic kabel nodig</td>
+                        </tr>
+                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
+                            <td style="padding:9px 14px; color:#888;">14</td><td style="padding:9px 14px;">Zang 2 (gitarist)</td><td style="padding:9px 14px; color:#f7931e;">1 DI</td><td style="padding:9px 14px; color:#888;"></td>
+                        </tr>
+                        <tr>
+                            <td style="padding:9px 14px; color:#888;">15</td><td style="padding:9px 14px;">Zang 3 (drummer)</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;">Eigen microfoonstandaard aan drumrack</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <h3>Basic Requirements</h3>
-            <ul>
-                <li><strong>Minimum Stage Size:</strong> [meters] x [meters]</li>
-                <li><strong>Power Requirements:</strong> [aantal] outlets, grounded</li>
-                <li><strong>Backline Needed:</strong> [list instruments/amps needed from venue]</li>
-                <li><strong>Monitoring:</strong> [aantal] monitor mixes preferred</li>
-                <li><strong>Load-In Time:</strong> [tijd] voor soundcheck</li>
-                <li><strong>Sound Engineer:</strong> We kunnen eigen engineer meebrengen indien gewenst</li>
-            </ul>
-            <div style="margin-top: 30px;">
-                <a href="#" class="download-btn" onclick="alert('Link naar volledige tech rider PDF'); return false;">Download Complete Tech Rider</a>
+
+            <h3>Contact & Boekingen</h3>
+            <div class="contact-item" style="margin-bottom:30px;">
+                <strong>Mathijs van Donzel</strong>
+                <p style="color:#ccc;">Deken de Louwstraat 3, 5401 BM Uden</p>
+                <a href="tel:0645894749">0645894749</a> &nbsp;·&nbsp;
+                <a href="mailto:allpointsnorth.live@gmail.com">allpointsnorth.live@gmail.com</a>
+            </div>
+
+            <h3>Download Tech Rider</h3>
+            <div class="download-section">
+                <p style="margin-bottom: 20px; color: #ccc;">Volledige technische rider beschikbaar als PDF en XLSX:</p>
+                <a href="files/APN_Technische_rider_docx.pdf" download class="download-btn">↓ Download Tech Rider (PDF)</a>
+                <a href="files/Technische_Rider_2026.xlsx" download class="download-btn">↓ Download Tech Rider (XLSX)</a>
             </div>
         </section>
 
@@ -894,23 +929,23 @@
             <div class="contact-grid">
                 <div class="contact-item">
                     <strong>Booking Inquiries</strong>
-                    <a href="mailto:allpointsnorth.band@gmail.com">booking@allpointsnorth.band</a>
+                    <a href="/cdn-cgi/l/email-protection#ccaea3a3a7a5a2ab8cada0a0bca3a5a2b8bfa2a3beb8a4e2aeada2a8"><span class="__cf_email__" data-cfemail="aac8c5c5c1c3c4cdeacbc6c6dac5c3c4ded9c4c5d8dec284c8cbc4ce">[email&#160;protected]</span></a>
                     <p style="margin-top: 10px; color: #888;">Voor show bookings, tour support, festival slots</p>
                 </div>
                 <div class="contact-item">
                     <strong>Press & Media</strong>
-                    <a href="mailto:allpointsnorth.band@gmail.com">press@allpointsnorth.band</a>
+                    <a href="/cdn-cgi/l/email-protection#11616374626251707d7d617e787f65627f7e6365793f73707f75"><span class="__cf_email__" data-cfemail="afdfddcadcdcefcec3c3dfc0c6c1dbdcc1c0dddbc781cdcec1cb">[email&#160;protected]</span></a>
                     <p style="margin-top: 10px; color: #888;">Interviews, reviews, promotional materials</p>
                 </div>
                 <div class="contact-item">
                     <strong>General Contact</strong>
-                    <a href="mailto:allpointsnorth.band@gmail.com">info@allpointsnorth.band</a>
+                    <a href="/cdn-cgi/l/email-protection#fb92959d94bb9a97978b9492958f889594898f93d5999a959f"><span class="__cf_email__" data-cfemail="c0a9aea6af80a1acacb0afa9aeb4b3aeafb2b4a8eea2a1aea4">[email&#160;protected]</span></a>
                     <p style="margin-top: 10px; color: #888;">Algemene vragen, collaboration inquiries</p>
                 </div>
                 <div class="contact-item">
                     <strong>Management</strong>
-                    <p style="color: #ccc;">[Jarno van Hurne / Mathijs van Donzel]</p>
-                    <a href="tel:+31622702272">+31 XXX XXX XXX</a>
+                    <p style="color: #ccc;">[Naam Manager/Band Contact]</p>
+                    <a href="tel:+31XXXXXXXXX">+31 XXX XXX XXX</a>
                     <p style="margin-top: 10px; color: #888;">Direct contact voor urgente zaken</p>
                 </div>
             </div>
@@ -920,7 +955,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 All Points North. All rights reserved.</p>
+        <p>&copy; 2025 All Points North. All rights reserved.</p>
         <p style="margin-top: 10px; font-size: 0.9em;">Progressive Rock from the Netherlands</p>
         <p style="margin-top: 20px;">
             <a href="https://www.instagram.com/allpointsnorth.band/" style="color: #ff6b35; text-decoration: none; margin: 0 10px;">Instagram</a> |
@@ -930,7 +965,7 @@
         </p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ── Stats animation ──
         function animateValue(id, start, end, duration) {
             const obj = document.getElementById(id);
@@ -1039,16 +1074,3 @@
         document.getElementById('lightboxNext').addEventListener('click', () => {
             currentIndex = (currentIndex + 1) % visibleCards.length;
             updateLightbox();
-        });
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
-        });
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('open')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + visibleCards.length) % visibleCards.length; updateLightbox(); }
-            if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % visibleCards.length; updateLightbox(); }
-        });
-    </script>
-</body>
-</html>
