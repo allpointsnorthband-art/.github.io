@@ -742,7 +742,7 @@
                 </div>
                 <div class="contact-card">
                     <div class="contact-card-type">Management</div>
-                    <div class="contact-card-name">Jarno van Hurne / Mathijs van Donzel</div>
+                    <div class="contact-card-name">Jarno van Hurne</div>
                     <a href="tel:+31622702272">+31 622 702 272</a>
                     <p class="note">Direct contact voor urgente zaken</p>
                 </div>
@@ -791,9 +791,9 @@ function animateCounter(id, end, duration, suffix) {
 var statsObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-            animateCounter('stat-spotify', 500,  2000, '+');
-            animateCounter('stat-social',  800,  2000, '+');
-            animateCounter('stat-shows',    15,  1500, '+');
+            animateCounter('stat-spotify', 100,  2000, '+');
+            animateCounter('stat-social',  100,  2000, '+');
+            animateCounter('stat-shows',    60,  1500, '+');
             animateCounter('stat-streams', 5000, 2500, '+');
             statsObserver.disconnect();
         }
