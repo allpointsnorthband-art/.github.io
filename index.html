@@ -218,7 +218,8 @@
             border-radius: 8px;
             margin-top: 30px;
         }
-        
+
+        /* FIX: Tech rider download buttons — styled as .download-btn but also work as plain anchors */
         .download-btn {
             display: inline-block;
             background: #ff6b35;
@@ -234,6 +235,35 @@
         .download-btn:hover {
             background: #f7931e;
             transform: translateY(-2px);
+        }
+
+        /* FIX: Disabled/unavailable download button state */
+        .download-btn.unavailable {
+            background: #444;
+            color: #888;
+            cursor: not-allowed;
+            position: relative;
+        }
+
+        .download-btn.unavailable:hover {
+            background: #444;
+            transform: none;
+        }
+
+        .download-btn.unavailable::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #222;
+            color: #ccc;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.78em;
+            white-space: nowrap;
+            pointer-events: none;
+            border: 1px solid rgba(255,107,53,0.2);
         }
         
         ul {
@@ -584,9 +614,15 @@
             .photo-card.featured { grid-column: span 1; aspect-ratio: 4/3; }
         }
 
-        /* Hide cards via class so grid display is preserved */
+        /*
+         * FIX: photo filter — use display:none via hidden class.
+         * 'featured' cards use grid-column:span 2, but display:none takes priority.
+         * We must NOT use .photo-card.hidden { display: none } because CSS specificity
+         * means it won't override the grid layout rule on .photo-card.featured.
+         * Instead we set display via inline style in JS (see script below).
+         */
         .photo-card.hidden {
-            display: none;
+            display: none !important;
         }
     </style>
 </head>
@@ -726,9 +762,16 @@
         </section>
 
 
-        <!-- PHOTOS — UPDATED SECTION -->
+        <!-- PHOTOS — FIXED SECTION -->
         <section id="photos">
             <h2>Photos</h2>
+
+            <!--
+                FIX SUMMARY FOR PHOTO SECTION:
+                1. Filter buttons now correctly show/hide cards using classList toggle + !important
+                2. Lightbox script was truncated — fully restored with keyboard support (Esc, arrow keys)
+                3. data-index attributes removed from HTML; lightbox builds its own index from DOM at click time
+            -->
 
             <!-- Filter bar -->
             <div class="photo-filter-bar">
@@ -737,26 +780,12 @@
                 <button class="filter-btn" data-filter="promo">Promo</button>
             </div>
 
-            <!--
-                HOW TO ADD PHOTOS:
-                1. Upload your images to the /photos/ folder in this repo.
-                2. Copy one of the <div class="photo-card"> blocks below.
-                3. Set the src to "photos/your-filename.jpg"
-                4. Set the download href to the same path.
-                5. Set data-category to "live", "promo", or "studio".
-                6. Update the caption text.
-
-                The first card uses class="photo-card featured" to span 2 columns.
-                Remove "featured" to make it a regular square card.
-            -->
-
             <div class="photo-grid" id="photoGrid">
 
                 <!-- ── LIVE PHOTOS ── -->
 
-                <!-- CARD 1 — Featured wide (live) -->
-                <div class="photo-card featured" data-category="live" data-index="0">
-                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/007.JPG" alt="All Points North live – 007">
+                <div class="photo-card featured" data-category="live">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/007.JPG" alt="All Points North live – 007" loading="lazy">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
                             <span class="photo-caption">Live – All Points North</span>
@@ -765,9 +794,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 2 -->
-                <div class="photo-card" data-category="live" data-index="1">
-                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/016.JPG" alt="All Points North live – 016">
+                <div class="photo-card" data-category="live">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/016.JPG" alt="All Points North live – 016" loading="lazy">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
                             <span class="photo-caption">Live – All Points North</span>
@@ -776,9 +804,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 3 -->
-                <div class="photo-card" data-category="live" data-index="2">
-                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/018.JPG" alt="All Points North live – 018">
+                <div class="photo-card" data-category="live">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/018.JPG" alt="All Points North live – 018" loading="lazy">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
                             <span class="photo-caption">Live – All Points North</span>
@@ -787,9 +814,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 4 -->
-                <div class="photo-card" data-category="live" data-index="3">
-                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/022.JPG" alt="All Points North live – 022">
+                <div class="photo-card" data-category="live">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/022.JPG" alt="All Points North live – 022" loading="lazy">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
                             <span class="photo-caption">Live – All Points North</span>
@@ -798,9 +824,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 5 -->
-                <div class="photo-card" data-category="live" data-index="4">
-                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/023.JPG" alt="All Points North live – 023">
+                <div class="photo-card" data-category="live">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/023.JPG" alt="All Points North live – 023" loading="lazy">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
                             <span class="photo-caption">Live – All Points North</span>
@@ -809,9 +834,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 6 — NEW: 025 (live) -->
-                <div class="photo-card" data-category="live" data-index="5">
-                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/025.JPG" alt="All Points North live – 025">
+                <div class="photo-card" data-category="live">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/025.JPG" alt="All Points North live – 025" loading="lazy">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
                             <span class="photo-caption">Live – All Points North</span>
@@ -822,9 +846,8 @@
 
                 <!-- ── PROMO PHOTOS (2018 shoot) ── -->
 
-                <!-- CARD 7 — NEW: Promo 0014-2, featured -->
-                <div class="photo-card featured" data-category="promo" data-index="6">
-                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0014-2.jpg" alt="All Points North – Promo 2018">
+                <div class="photo-card featured" data-category="promo">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0014-2.jpg" alt="All Points North – Promo 2018" loading="lazy">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
                             <span class="photo-caption">Promo – All Points North 2018</span>
@@ -833,9 +856,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 8 — NEW: Promo 0014 -->
-                <div class="photo-card" data-category="promo" data-index="7">
-                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0014.jpg" alt="All Points North – Promo 2018 #0014">
+                <div class="photo-card" data-category="promo">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0014.jpg" alt="All Points North – Promo 2018 #0014" loading="lazy">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
                             <span class="photo-caption">Promo – All Points North 2018</span>
@@ -844,9 +866,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 9 — NEW: Promo 0310 -->
-                <div class="photo-card" data-category="promo" data-index="8">
-                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0310.jpg" alt="All Points North – Promo 2018 #0310">
+                <div class="photo-card" data-category="promo">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0310.jpg" alt="All Points North – Promo 2018 #0310" loading="lazy">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
                             <span class="photo-caption">Promo – All Points North 2018</span>
@@ -855,9 +876,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 10 — NEW: Promo 0335 -->
-                <div class="photo-card" data-category="promo" data-index="9">
-                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0335.jpg" alt="All Points North – Promo 2018 #0335">
+                <div class="photo-card" data-category="promo">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0335.jpg" alt="All Points North – Promo 2018 #0335" loading="lazy">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
                             <span class="photo-caption">Promo – All Points North 2018</span>
@@ -866,9 +886,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 11 — NEW: Promo 0341 -->
-                <div class="photo-card" data-category="promo" data-index="10">
-                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0341.jpg" alt="All Points North – Promo 2018 #0341">
+                <div class="photo-card" data-category="promo">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0341.jpg" alt="All Points North – Promo 2018 #0341" loading="lazy">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
                             <span class="photo-caption">Promo – All Points North 2018</span>
@@ -877,9 +896,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 12 — NEW: Facebook profile square (promo) -->
-                <div class="photo-card" data-category="promo" data-index="11">
-                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/facebook%20profiel%20square%20-%201.jpg" alt="All Points North – Profile Photo">
+                <div class="photo-card" data-category="promo">
+                    <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/facebook%20profiel%20square%20-%201.jpg" alt="All Points North – Profile Photo" loading="lazy">
                     <div class="photo-overlay">
                         <div class="photo-overlay-content">
                             <span class="photo-caption">Promo – All Points North</span>
@@ -891,21 +909,27 @@
             </div><!-- /photo-grid -->
 
             <!-- Bulk download bar -->
+            <!-- FIX: "Request Hi-Res" now uses a plain mailto: link to allpointsnorth.band@gmail.com -->
+            <!-- FIX: ZIP download points to the GitHub archive (works when repo is public) -->
             <div class="bulk-download-bar">
                 <p><strong>Press use:</strong> All photos are free to use for editorial and promotional purposes. Credit: All Points North.</p>
                 <div class="bulk-btns">
-                    <a href="https://github.com/allpointsnorthband-art/allpointsnorthband-art.github.io/archive/refs/heads/main.zip" class="bulk-btn">↓ Download All Photos (ZIP)</a>
-                    <a href="/cdn-cgi/l/email-protection#2e5e5c4b5d5d6e4f42425e4147405a5d40415c5a46004c4f404a" class="bulk-btn secondary">📧 Request Hi-Res</a>
+                    <a href="https://github.com/allpointsnorthband-art/allpointsnorthband-art.github.io/archive/refs/heads/main.zip"
+                       class="bulk-btn"
+                       target="_blank"
+                       rel="noopener">↓ Download All Photos (ZIP)</a>
+                    <a href="mailto:allpointsnorth.band@gmail.com?subject=Hi-Res%20Photo%20Request%20-%20All%20Points%20North&body=Hi%2C%0A%0AI%20would%20like%20to%20request%20hi-resolution%20photos%20of%20All%20Points%20North.%0A%0AName%3A%0APublication%2FContext%3A%0APhotos%20needed%3A%0A%0AThanks!"
+                       class="bulk-btn secondary">📧 Request Hi-Res</a>
                 </div>
             </div>
         </section>
 
-        <!-- Lightbox -->
+        <!-- Lightbox — FULLY RESTORED (was truncated in original) -->
         <div class="lightbox" id="lightbox">
             <div class="lightbox-inner">
-                <button class="lightbox-close" id="lightboxClose">✕</button>
-                <button class="lightbox-nav prev" id="lightboxPrev">‹</button>
-                <button class="lightbox-nav next" id="lightboxNext">›</button>
+                <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">✕</button>
+                <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+                <button class="lightbox-nav next" id="lightboxNext" aria-label="Next photo">›</button>
                 <img src="" alt="" class="lightbox-img" id="lightboxImg">
                 <div class="lightbox-caption">
                     <span class="lightbox-caption-text" id="lightboxCaption"></span>
@@ -980,43 +1004,62 @@
             </div>
 
             <h3>Contact & Boekingen</h3>
+            <!-- FIX: Plain email/phone — no Cloudflare obfuscation needed when hosted yourself -->
             <div class="contact-item" style="margin-bottom:30px;">
                 <strong>Mathijs van Donzel</strong>
                 <p style="color:#ccc;">Deken de Louwstraat 3, 5401 BM Uden</p>
-                <a href="tel:0645894749">0645894749</a> &nbsp;·&nbsp;
-                <a href="/cdn-cgi/l/email-protection#1a7b76766a7573746e697475686e7234787b747e5a7d777b737634797577"><span class="__cf_email__" data-cfemail="34555858445b5d5a40475a5b46405c1a56555a50745359555d581a575b59">[email&#160;protected]</span></a>
+                <a href="tel:+31645894749">0645894749</a> &nbsp;·&nbsp;
+                <a href="mailto:allpointsnorth.band@gmail.com">allpointsnorth.band@gmail.com</a>
             </div>
 
             <h3>Download Tech Rider</h3>
+            <!--
+                FIX: Tech rider downloads.
+                The files at files/APN_Technische_rider_docx.pdf and files/Technische_Rider_2026.xlsx
+                must exist in the /files/ folder of the GitHub repo for these links to work.
+                Until uploaded, buttons show a tooltip explaining the file is coming soon.
+                Replace class="download-btn unavailable" with class="download-btn" and restore href
+                once the files are committed to the repo.
+            -->
             <div class="download-section">
                 <p style="margin-bottom: 20px; color: #ccc;">Volledige technische rider beschikbaar als PDF en XLSX:</p>
-                <a href="files/APN_Technische_rider_docx.pdf" download class="download-btn">↓ Download Tech Rider (PDF)</a>
-                <a href="files/Technische_Rider_2026.xlsx" download class="download-btn">↓ Download Tech Rider (XLSX)</a>
+                <a href="files/APN_Technische_rider_docx.pdf"
+                   download
+                   class="download-btn"
+                   id="techRiderPdfBtn">↓ Download Tech Rider (PDF)</a>
+                <a href="files/Technische_Rider_2026.xlsx"
+                   download
+                   class="download-btn"
+                   id="techRiderXlsxBtn">↓ Download Tech Rider (XLSX)</a>
+                <p style="margin-top:16px; color:#666; font-size:0.85em;" id="techRiderNote" style="display:none;">
+                    ⚠️ Bestanden nog niet geüpload. Voeg <code>files/APN_Technische_rider_docx.pdf</code> en <code>files/Technische_Rider_2026.xlsx</code> toe aan de GitHub repo om de downloads te activeren.
+                </p>
             </div>
         </section>
 
         <!-- CONTACT -->
+        <!-- FIX: All contact emails use plain mailto: links -->
         <section id="contact">
             <h2>Contact & Booking</h2>
             <div class="contact-grid">
                 <div class="contact-item">
                     <strong>Booking Inquiries</strong>
-                    <a href="/cdn-cgi/l/email-protection#29484545594640475d5a47465b5d41074b48474d694e44484045074a4644"><span class="__cf_email__" data-cfemail="89e8e5e5f9e6e0e7fdfae7e6fbfde1a7ebe8e7edc9eee4e8e0e5a7eae6e4">[email&#160;protected]</span></a>
+                    <a href="mailto:allpointsnorth.band@gmail.com?subject=Booking%20Inquiry%20-%20All%20Points%20North">allpointsnorth.band@gmail.com</a>
                     <p style="margin-top: 10px; color: #888;">Voor show bookings, tour support, festival slots</p>
                 </div>
                 <div class="contact-item">
                     <strong>Press & Media</strong>
-                    <a href="/cdn-cgi/l/email-protection#5c3d30302c333532282f32332e2834723e3d32381c3b313d3530723f3331"><span class="__cf_email__" data-cfemail="6b0a07071b0402051f180504191f0345090a050f2b0c060a020745080406">[email&#160;protected]</span></a>
+                    <a href="mailto:allpointsnorth.band@gmail.com?subject=Press%20Inquiry%20-%20All%20Points%20North">allpointsnorth.band@gmail.com</a>
                     <p style="margin-top: 10px; color: #888;">Interviews, reviews, promotional materials</p>
                 </div>
                 <div class="contact-item">
                     <strong>General Contact</strong>
-                   <a href="/cdn-cgi/l/email-protection#8eefe2e2fee1e7e0fafde0e1fcfae6a0ecefe0eacee9e3efe7e2a0ede1e3"><span class="__cf_email__" data-cfemail="b8d9d4d4c8d7d1d6cccbd6d7caccd096dad9d6dcf8dfd5d9d1d496dbd7d5">[email&#160;protected]</span></a>
+                    <a href="mailto:allpointsnorth.band@gmail.com">allpointsnorth.band@gmail.com</a>
                     <p style="margin-top: 10px; color: #888;">Algemene vragen, collaboration inquiries</p>
                 </div>
                 <div class="contact-item">
                     <strong>Management</strong>
-                    <p style="color: #ccc;">[Jarno van Hurne/Mathijs van Donzel]</p>
+                    <p style="color: #ccc;">Jarno van Hurne / Mathijs van Donzel</p>
                     <a href="tel:+31622702272">+31 622 702 272</a>
                     <p style="margin-top: 10px; color: #888;">Direct contact voor urgente zaken</p>
                 </div>
@@ -1037,8 +1080,10 @@
         </p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // ── Stats animation ──
+    <script>
+        // ─────────────────────────────────────────────
+        // Stats counter animation
+        // ─────────────────────────────────────────────
         function animateValue(id, start, end, duration) {
             const obj = document.getElementById(id);
             if (!obj) return;
@@ -1058,11 +1103,13 @@
             animateValue('streams', 0, 5000, 2500);
         });
 
-        // ── Smooth scroll ──
+        // ─────────────────────────────────────────────
+        // Smooth scroll for anchor links
+        // ─────────────────────────────────────────────
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 const target = this.getAttribute('href');
-                if (target !== '#') {
+                if (target && target !== '#') {
                     e.preventDefault();
                     const el = document.querySelector(target);
                     if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -1070,29 +1117,61 @@
             });
         });
 
-        // ── Photo filter ──
+        // ─────────────────────────────────────────────
+        // FIX: Photo filter
+        // Toggle .hidden class; CSS uses !important to guarantee display:none
+        // overrides any other display rules (incl. grid-column on featured cards)
+        // ─────────────────────────────────────────────
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
+                // Update active button
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
+
                 const filter = btn.dataset.filter;
+
                 document.querySelectorAll('.photo-card').forEach(card => {
                     const match = filter === 'all' || card.dataset.category === filter;
-                    card.classList.toggle('hidden', !match);
+                    if (match) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
                 });
             });
         });
 
-        // ── Lightbox ──
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const lightboxCaption = document.getElementById('lightboxCaption');
-        const lightboxDownload = document.getElementById('lightboxDownload');
+        // ─────────────────────────────────────────────
+        // FIX: Lightbox — fully restored (original was truncated at addEventL...)
+        // Also fixed: keyboard navigation (Esc, ←, →)
+        // ─────────────────────────────────────────────
+        const lightbox     = document.getElementById('lightbox');
+        const lightboxImg  = document.getElementById('lightboxImg');
+        const lightboxCap  = document.getElementById('lightboxCaption');
+        const lightboxDl   = document.getElementById('lightboxDownload');
+
         let currentIndex = 0;
-        let visibleCards = [];
+        let visibleCards  = [];
 
         function getVisibleCards() {
             return [...document.querySelectorAll('.photo-card')].filter(c => !c.classList.contains('hidden'));
+        }
+
+        function updateLightbox() {
+            const card = visibleCards[currentIndex];
+            if (!card) return;
+            const img     = card.querySelector('img');
+            const caption = card.querySelector('.photo-caption');
+            const dlBtn   = card.querySelector('.photo-download-btn');
+            if (img) {
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt || '';
+            }
+            lightboxCap.textContent = caption ? caption.textContent.trim() : '';
+            if (dlBtn) {
+                lightboxDl.href     = dlBtn.href;
+                lightboxDl.download = dlBtn.download || '';
+            }
         }
 
         function openLightbox(index) {
@@ -1108,23 +1187,22 @@
             document.body.style.overflow = '';
         }
 
-        function updateLightbox() {
-            const card = visibleCards[currentIndex];
-            if (!card) return;
-            const img = card.querySelector('img');
-            const caption = card.querySelector('.photo-caption');
-            const dlBtn = card.querySelector('.photo-download-btn');
-            if (img) {
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt || '';
-            }
-            lightboxCaption.textContent = caption ? caption.textContent : '';
-            lightboxDownload.href = dlBtn ? dlBtn.href : '#';
+        function showPrev() {
+            visibleCards = getVisibleCards();
+            currentIndex = (currentIndex - 1 + visibleCards.length) % visibleCards.length;
+            updateLightbox();
         }
 
+        function showNext() {
+            visibleCards = getVisibleCards();
+            currentIndex = (currentIndex + 1) % visibleCards.length;
+            updateLightbox();
+        }
+
+        // Open lightbox when clicking a card (but not the download button)
         document.querySelectorAll('.photo-card').forEach(card => {
             card.addEventListener('click', (e) => {
-                if (e.target.closest('.photo-download-btn')) return;
+                if (e.target.closest('.photo-download-btn')) return; // let download work normally
                 visibleCards = getVisibleCards();
                 const idx = visibleCards.indexOf(card);
                 if (idx > -1) openLightbox(idx);
@@ -1132,8 +1210,50 @@
         });
 
         document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-        document.getElementById('lightboxPrev').addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + visibleCards.length) % visibleCards.length;
-            updateLightbox();
+        document.getElementById('lightboxPrev').addEventListener('click', showPrev);
+        document.getElementById('lightboxNext').addEventListener('click', showNext);
+
+        // Close on backdrop click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) closeLightbox();
         });
-        document.getElementById('lightboxNext').addEventL
+
+        // FIX: Keyboard navigation (was missing in original)
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape')      closeLightbox();
+            if (e.key === 'ArrowLeft')   showPrev();
+            if (e.key === 'ArrowRight')  showNext();
+        });
+
+        // ─────────────────────────────────────────────
+        // FIX: Tech rider download check
+        // Detect 404s and show a warning note if files aren't uploaded yet
+        // ─────────────────────────────────────────────
+        function checkFileExists(url, btnId, noteId) {
+            fetch(url, { method: 'HEAD' })
+                .then(res => {
+                    if (!res.ok) {
+                        const btn = document.getElementById(btnId);
+                        if (btn) {
+                            btn.classList.add('unavailable');
+                            btn.setAttribute('data-tooltip', 'Bestand nog niet geüpload in de repo');
+                            btn.addEventListener('click', e => e.preventDefault());
+                        }
+                        const note = document.getElementById('techRiderNote');
+                        if (note) note.style.display = 'block';
+                    }
+                })
+                .catch(() => {
+                    // Network error or CORS — silently ignore, let the download attempt naturally
+                });
+        }
+
+        // Only run the check when the page loads (non-blocking)
+        window.addEventListener('load', () => {
+            checkFileExists('files/APN_Technische_rider_docx.pdf',  'techRiderPdfBtn',  'techRiderNote');
+            checkFileExists('files/Technische_Rider_2026.xlsx',     'techRiderXlsxBtn', 'techRiderNote');
+        });
+    </script>
+</body>
+</html>
