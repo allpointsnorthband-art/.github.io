@@ -5,598 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Points North - Electronic Press Kit</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: #e0e0e0;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(180deg, #000 0%, #1a1a1a 100%);
-            border-bottom: 3px solid #ff6b35;
-        }
-        
-        .logo {
-            font-size: 3.5em;
-            font-weight: 900;
-            letter-spacing: -2px;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .tagline {
-            font-size: 1.2em;
-            color: #888;
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
-        
-        .quick-links {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        
-        .quick-links a {
-            background: rgba(255, 107, 53, 0.1);
-            border: 2px solid #ff6b35;
-            color: #ff6b35;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .quick-links a:hover {
-            background: #ff6b35;
-            color: #000;
-            transform: translateY(-2px);
-        }
-        
-        section {
-            margin: 60px 0;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 107, 53, 0.1);
-        }
-        
-        h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #ff6b35;
-            border-bottom: 2px solid #ff6b35;
-            padding-bottom: 10px;
-        }
-        
-        h3 {
-            font-size: 1.5em;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #f7931e;
-        }
-        
-        .bio-text {
-            font-size: 1.1em;
-            line-height: 1.8;
-            color: #ccc;
-        }
-        
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        
-        .stat-card {
-            background: rgba(255, 107, 53, 0.05);
-            padding: 30px;
-            border-radius: 8px;
-            border-left: 4px solid #ff6b35;
-            text-align: center;
-        }
-        
-        .stat-number {
-            font-size: 2.5em;
-            font-weight: 900;
-            color: #ff6b35;
-            display: block;
-        }
-        
-        .stat-label {
-            color: #888;
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-        
-        .music-links {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 30px 0;
-        }
-        
-        .music-link {
-            flex: 1;
-            min-width: 200px;
-            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-            color: #000;
-            padding: 20px;
-            text-align: center;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-        
-        .music-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
-        }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .contact-item {
-            background: rgba(255, 107, 53, 0.05);
-            padding: 20px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 107, 53, 0.2);
-        }
-        
-        .contact-item strong {
-            color: #ff6b35;
-            display: block;
-            margin-bottom: 10px;
-            font-size: 1.1em;
-        }
-        
-        .contact-item a {
-            color: #f7931e;
-            text-decoration: none;
-        }
-        
-        .contact-item a:hover {
-            text-decoration: underline;
-        }
-        
-        .genre-tags {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-        
-        .tag {
-            background: rgba(255, 107, 53, 0.2);
-            color: #ff6b35;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 600;
-        }
-        
-        .placeholder-box {
-            background: rgba(255, 107, 53, 0.05);
-            border: 2px dashed rgba(255, 107, 53, 0.3);
-            padding: 60px;
-            text-align: center;
-            border-radius: 8px;
-            margin: 20px 0;
-            color: #888;
-        }
-        
-        .download-section {
-            background: rgba(255, 107, 53, 0.05);
-            padding: 30px;
-            border-radius: 8px;
-            margin-top: 30px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); color: #e0e0e0; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 60px 20px; background: linear-gradient(180deg, #000 0%, #1a1a1a 100%); border-bottom: 3px solid #ff6b35; }
+        .logo { font-size: 3.5em; font-weight: 900; letter-spacing: -2px; margin-bottom: 10px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .tagline { font-size: 1.2em; color: #888; font-weight: 300; margin-bottom: 30px; }
+        .quick-links { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+        .quick-links a { background: rgba(255,107,53,0.1); border: 2px solid #ff6b35; color: #ff6b35; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-weight: 600; transition: all 0.3s ease; }
+        .quick-links a:hover { background: #ff6b35; color: #000; transform: translateY(-2px); }
+        section { margin: 60px 0; padding: 40px; background: rgba(255,255,255,0.02); border-radius: 10px; border: 1px solid rgba(255,107,53,0.1); }
+        h2 { font-size: 2.5em; margin-bottom: 20px; color: #ff6b35; border-bottom: 2px solid #ff6b35; padding-bottom: 10px; }
+        h3 { font-size: 1.5em; margin-top: 30px; margin-bottom: 15px; color: #f7931e; }
+        .bio-text { font-size: 1.1em; line-height: 1.8; color: #ccc; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 30px 0; }
+        .stat-card { background: rgba(255,107,53,0.05); padding: 30px; border-radius: 8px; border-left: 4px solid #ff6b35; text-align: center; }
+        .stat-number { font-size: 2.5em; font-weight: 900; color: #ff6b35; display: block; }
+        .stat-label { color: #888; font-size: 0.9em; margin-top: 5px; }
+        .music-links { display: flex; gap: 20px; flex-wrap: wrap; margin: 30px 0; }
+        .music-link { flex: 1; min-width: 200px; background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%); color: #000; padding: 20px; text-align: center; border-radius: 8px; text-decoration: none; font-weight: 700; transition: all 0.3s ease; }
+        .music-link:hover { transform: scale(1.05); box-shadow: 0 10px 30px rgba(255,107,53,0.3); }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
+        .contact-item { background: rgba(255,107,53,0.05); padding: 20px; border-radius: 8px; border: 1px solid rgba(255,107,53,0.2); }
+        .contact-item strong { color: #ff6b35; display: block; margin-bottom: 10px; font-size: 1.1em; }
+        .contact-item a { color: #f7931e; text-decoration: none; }
+        .contact-item a:hover { text-decoration: underline; }
+        .genre-tags { display: flex; gap: 10px; flex-wrap: wrap; margin: 20px 0; }
+        .tag { background: rgba(255,107,53,0.2); color: #ff6b35; padding: 8px 16px; border-radius: 20px; font-size: 0.9em; font-weight: 600; }
+        .placeholder-box { background: rgba(255,107,53,0.05); border: 2px dashed rgba(255,107,53,0.3); padding: 60px; text-align: center; border-radius: 8px; margin: 20px 0; color: #888; }
+        .download-section { background: rgba(255,107,53,0.05); padding: 30px; border-radius: 8px; margin-top: 30px; }
+        .download-btn { display: inline-block; background: #ff6b35; color: #000; padding: 15px 40px; border-radius: 5px; text-decoration: none; font-weight: 700; margin: 10px; transition: all 0.3s ease; }
+        .download-btn:hover { background: #f7931e; transform: translateY(-2px); }
+        .download-btn.unavailable { background: #444; color: #888; cursor: not-allowed; position: relative; }
+        .download-btn.unavailable:hover { background: #444; transform: none; }
+        .download-btn.unavailable::after { content: attr(data-tooltip); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); background: #222; color: #ccc; padding: 6px 12px; border-radius: 4px; font-size: 0.78em; white-space: nowrap; pointer-events: none; border: 1px solid rgba(255,107,53,0.2); }
+        ul { list-style: none; padding-left: 0; }
+        ul li { padding: 10px 0; padding-left: 30px; position: relative; }
+        ul li:before { content: "▸"; position: absolute; left: 0; color: #ff6b35; font-weight: 900; }
+        footer { text-align: center; padding: 40px; color: #666; border-top: 1px solid rgba(255,107,53,0.1); margin-top: 60px; }
 
-        /* FIX: Tech rider download buttons — styled as .download-btn but also work as plain anchors */
-        .download-btn {
-            display: inline-block;
-            background: #ff6b35;
-            color: #000;
-            padding: 15px 40px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 700;
-            margin: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .download-btn:hover {
-            background: #f7931e;
-            transform: translateY(-2px);
-        }
+        /* PHOTO GALLERY */
+        .photo-filter-bar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 30px; }
+        .filter-btn { background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.3); color: #888; padding: 8px 20px; border-radius: 20px; cursor: pointer; font-size: 0.85em; font-weight: 600; transition: all 0.2s ease; letter-spacing: 0.05em; text-transform: uppercase; }
+        .filter-btn:hover, .filter-btn.active { background: #ff6b35; border-color: #ff6b35; color: #000; }
+        .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 20px 0; }
+        .photo-card { position: relative; border-radius: 6px; overflow: hidden; aspect-ratio: 4/3; background: rgba(255,107,53,0.04); border: 1px solid rgba(255,107,53,0.1); cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+        .photo-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(255,107,53,0.25); }
+        .photo-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+        .photo-card:hover img { transform: scale(1.04); }
+        .photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 50%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 14px; }
+        .photo-card:hover .photo-overlay { opacity: 1; }
+        .photo-overlay-content { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+        .photo-caption { font-size: 0.8em; color: #ddd; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .photo-download-btn { flex-shrink: 0; background: #ff6b35; color: #000; padding: 6px 14px; border-radius: 4px; font-size: 0.75em; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 5px; transition: background 0.2s ease; white-space: nowrap; }
+        .photo-download-btn:hover { background: #f7931e; }
+        .photo-card.featured { grid-column: span 2; aspect-ratio: 16/9; }
 
-        /* FIX: Disabled/unavailable download button state */
-        .download-btn.unavailable {
-            background: #444;
-            color: #888;
-            cursor: not-allowed;
-            position: relative;
-        }
-
-        .download-btn.unavailable:hover {
-            background: #444;
-            transform: none;
-        }
-
-        .download-btn.unavailable::after {
-            content: attr(data-tooltip);
-            position: absolute;
-            bottom: calc(100% + 8px);
-            left: 50%;
-            transform: translateX(-50%);
-            background: #222;
-            color: #ccc;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.78em;
-            white-space: nowrap;
-            pointer-events: none;
-            border: 1px solid rgba(255,107,53,0.2);
-        }
-        
-        ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        ul li {
-            padding: 10px 0;
-            padding-left: 30px;
-            position: relative;
-        }
-        
-        ul li:before {
-            content: "▸";
-            position: absolute;
-            left: 0;
-            color: #ff6b35;
-            font-weight: 900;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-            border-top: 1px solid rgba(255, 107, 53, 0.1);
-            margin-top: 60px;
-        }
-
-        /* ===================== */
-        /* PHOTO GALLERY STYLES  */
-        /* ===================== */
-
-        .photo-filter-bar {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-
-        .filter-btn {
-            background: rgba(255, 107, 53, 0.1);
-            border: 1px solid rgba(255, 107, 53, 0.3);
-            color: #888;
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85em;
-            font-weight: 600;
-            transition: all 0.2s ease;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #ff6b35;
-            border-color: #ff6b35;
-            color: #000;
-        }
-
-        .photo-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin: 20px 0;
-        }
-
-        .photo-card {
-            position: relative;
-            border-radius: 6px;
-            overflow: hidden;
-            aspect-ratio: 4/3;
-            background: rgba(255, 107, 53, 0.04);
-            border: 1px solid rgba(255, 107, 53, 0.1);
-            cursor: pointer;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .photo-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(255, 107, 53, 0.25);
-        }
-
-        .photo-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-
-        .photo-card:hover img {
-            transform: scale(1.04);
-        }
-
-        /* Overlay on hover */
-        .photo-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 50%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            display: flex;
-            align-items: flex-end;
-            padding: 14px;
-        }
-
-        .photo-card:hover .photo-overlay {
-            opacity: 1;
-        }
-
-        .photo-overlay-content {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 8px;
-        }
-
-        .photo-caption {
-            font-size: 0.8em;
-            color: #ddd;
-            font-weight: 500;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .photo-download-btn {
-            flex-shrink: 0;
-            background: #ff6b35;
-            color: #000;
-            padding: 6px 14px;
-            border-radius: 4px;
-            font-size: 0.75em;
-            font-weight: 700;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: background 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .photo-download-btn:hover {
-            background: #f7931e;
-        }
-
-        /* Wide/featured card spans 2 columns */
-        .photo-card.featured {
-            grid-column: span 2;
-            aspect-ratio: 16/9;
-        }
-
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .lightbox.open {
-            display: flex;
-        }
-
-        .lightbox-inner {
-            position: relative;
-            max-width: 1100px;
-            width: 100%;
-        }
-
-        .lightbox-img {
-            width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 6px;
-            display: block;
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: -44px;
-            right: 0;
-            background: none;
-            border: none;
-            color: #ff6b35;
-            font-size: 2em;
-            cursor: pointer;
-            line-height: 1;
-        }
-
-        .lightbox-caption {
-            margin-top: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .lightbox-caption-text {
-            color: #aaa;
-            font-size: 0.9em;
-        }
-
-        .lightbox-download {
-            background: #ff6b35;
-            color: #000;
-            padding: 10px 24px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9em;
-            white-space: nowrap;
-            transition: background 0.2s ease;
-        }
-
-        .lightbox-download:hover {
-            background: #f7931e;
-        }
-
-        .lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 107, 53, 0.15);
-            border: 1px solid rgba(255, 107, 53, 0.3);
-            color: #ff6b35;
-            font-size: 1.8em;
-            padding: 10px 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background 0.2s ease;
-            line-height: 1;
-        }
-
-        .lightbox-nav:hover {
-            background: rgba(255, 107, 53, 0.35);
-        }
-
+        /* LIGHTBOX */
+        .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; padding: 20px; }
+        .lightbox.open { display: flex; }
+        .lightbox-inner { position: relative; max-width: 1100px; width: 100%; }
+        .lightbox-img { width: 100%; max-height: 80vh; object-fit: contain; border-radius: 6px; display: block; }
+        .lightbox-close { position: absolute; top: -44px; right: 0; background: none; border: none; color: #ff6b35; font-size: 2em; cursor: pointer; line-height: 1; }
+        .lightbox-caption { margin-top: 12px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+        .lightbox-caption-text { color: #aaa; font-size: 0.9em; }
+        .lightbox-download { background: #ff6b35; color: #000; padding: 10px 24px; border-radius: 5px; text-decoration: none; font-weight: 700; font-size: 0.9em; white-space: nowrap; transition: background 0.2s ease; }
+        .lightbox-download:hover { background: #f7931e; }
+        .lightbox-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,107,53,0.15); border: 1px solid rgba(255,107,53,0.3); color: #ff6b35; font-size: 1.8em; padding: 10px 16px; cursor: pointer; border-radius: 4px; transition: background 0.2s ease; line-height: 1; }
+        .lightbox-nav:hover { background: rgba(255,107,53,0.35); }
         .lightbox-nav.prev { left: -60px; }
         .lightbox-nav.next { right: -60px; }
 
-        .photo-empty-state {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 60px 20px;
-            color: #555;
-            font-size: 0.95em;
-        }
-
-        .photo-empty-state .icon {
-            font-size: 3em;
-            margin-bottom: 16px;
-            opacity: 0.4;
-        }
-
-        .photo-empty-state p {
-            max-width: 420px;
-            margin: 0 auto;
-            line-height: 1.7;
-            color: #666;
-        }
-
-        .photo-empty-state code {
-            background: rgba(255,107,53,0.1);
-            color: #ff6b35;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.85em;
-        }
-
-        .bulk-download-bar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 24px;
-            padding: 20px 24px;
-            background: rgba(255, 107, 53, 0.05);
-            border: 1px solid rgba(255, 107, 53, 0.15);
-            border-radius: 8px;
-        }
-
-        .bulk-download-bar p {
-            color: #888;
-            font-size: 0.9em;
-        }
-
-        .bulk-download-bar p strong {
-            color: #ccc;
-        }
-
-        .bulk-btns {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .bulk-btn {
-            background: #ff6b35;
-            color: #000;
-            padding: 11px 24px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.88em;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.2s ease;
-        }
-
-        .bulk-btn:hover {
-            background: #f7931e;
-            transform: translateY(-2px);
-        }
-
-        .bulk-btn.secondary {
-            background: transparent;
-            border: 2px solid #ff6b35;
-            color: #ff6b35;
-        }
-
-        .bulk-btn.secondary:hover {
-            background: rgba(255,107,53,0.1);
-        }
+        /* BULK DOWNLOAD BAR */
+        .bulk-download-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-top: 24px; padding: 20px 24px; background: rgba(255,107,53,0.05); border: 1px solid rgba(255,107,53,0.15); border-radius: 8px; }
+        .bulk-download-bar p { color: #888; font-size: 0.9em; }
+        .bulk-download-bar p strong { color: #ccc; }
+        .bulk-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+        .bulk-btn { background: #ff6b35; color: #000; padding: 11px 24px; border-radius: 5px; text-decoration: none; font-weight: 700; font-size: 0.88em; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; }
+        .bulk-btn:hover { background: #f7931e; transform: translateY(-2px); }
+        .bulk-btn.secondary { background: transparent; border: 2px solid #ff6b35; color: #ff6b35; }
+        .bulk-btn.secondary:hover { background: rgba(255,107,53,0.1); }
 
         @media (max-width: 768px) {
             .logo { font-size: 2.5em; }
@@ -608,21 +96,9 @@
             .lightbox-nav.prev { left: 0; }
             .lightbox-nav.next { right: 0; }
         }
-
         @media (max-width: 480px) {
             .photo-grid { grid-template-columns: 1fr; }
             .photo-card.featured { grid-column: span 1; aspect-ratio: 4/3; }
-        }
-
-        /*
-         * FIX: photo filter — use display:none via hidden class.
-         * 'featured' cards use grid-column:span 2, but display:none takes priority.
-         * We must NOT use .photo-card.hidden { display: none } because CSS specificity
-         * means it won't override the grid layout rule on .photo-card.featured.
-         * Instead we set display via inline style in JS (see script below).
-         */
-        .photo-card.hidden {
-            display: none !important;
         }
     </style>
 </head>
@@ -639,7 +115,6 @@
     </header>
 
     <div class="container">
-        <!-- BIO SECTION -->
         <section id="bio">
             <h2>About</h2>
             <div class="genre-tags">
@@ -649,19 +124,11 @@
                 <span class="tag">Technical</span>
                 <span class="tag">Atmospheric</span>
             </div>
-            
             <div class="bio-text">
-                <p style="margin-bottom: 20px;">
-                    <strong>All Points North</strong> is een progressive rock band uit Nederland die complexe composities combineert met emotionele diepte. De band verkent de grenzen van technische muzikaliteit terwijl ze toegankelijke melodieën behoudt die resoneren met zowel prog puristen als nieuwe luisteraars.
-                </p>
-                <p style="margin-bottom: 20px;">
-                    Met invloeden variërend van klassieke progressive rock iconen tot moderne djent en post-metal, creëert All Points North een geluid dat zowel vertrouwd als vernieuwend aanvoelt. Hun muziek wordt gekenmerkt door ingewikkelde ritmische patronen, atmosferische passages en dynamische contrasten die luisteraars meenemen op een sonische reis.
-                </p>
-                <p>
-                    De band is actief in de Nederlandse underground prog scene en bouwt een toegewijde fanbase op door authentieke muziek te maken die artistieke integriteit boven commerciële overwegingen plaatst. All Points North vertegenwoordigt de nieuwe generatie van Nederlandse progressive rock—technisch vaardig, emotioneel oprecht, en niet bang om risico's te nemen.
-                </p>
+                <p style="margin-bottom:20px;"><strong>All Points North</strong> is een progressive rock band uit Nederland die complexe composities combineert met emotionele diepte. De band verkent de grenzen van technische muzikaliteit terwijl ze toegankelijke melodieën behoudt die resoneren met zowel prog puristen als nieuwe luisteraars.</p>
+                <p style="margin-bottom:20px;">Met invloeden variërend van klassieke progressive rock iconen tot moderne djent en post-metal, creëert All Points North een geluid dat zowel vertrouwd als vernieuwend aanvoelt. Hun muziek wordt gekenmerkt door ingewikkelde ritmische patronen, atmosferische passages en dynamische contrasten die luisteraars meenemen op een sonische reis.</p>
+                <p>De band is actief in de Nederlandse underground prog scene en bouwt een toegewijde fanbase op door authentieke muziek te maken die artistieke integriteit boven commerciële overwegingen plaatst. All Points North vertegenwoordigt de nieuwe generatie van Nederlandse progressive rock—technisch vaardig, emotioneel oprecht, en niet bang om risico's te nemen.</p>
             </div>
-
             <h3>Muzikale Kenmerken</h3>
             <ul>
                 <li>Complexe time signatures en polyrhythmische structuren</li>
@@ -672,10 +139,8 @@
             </ul>
         </section>
 
-        <!-- MUSIC SECTION -->
         <section id="music">
             <h2>Music</h2>
-            
             <h3>Stream Nu</h3>
             <div class="music-links">
                 <a href="https://open.spotify.com/artist/02lo7GheOKHi4dcjFhh46B" target="_blank" class="music-link">🎵 Spotify</a>
@@ -683,38 +148,25 @@
                 <a href="https://music.apple.com/us/artist/all-points-north/1671344314" target="_blank" class="music-link">🍎 Apple Music</a>
                 <a href="https://www.youtube.com/channel/UC21YAJsZDA_rvj9bPUkJR_A" target="_blank" class="music-link">▶ YouTube</a>
             </div>
-
             <h3>Laatste Releases</h3>
             <div class="placeholder-box">
                 📀 Embracer - EP<br>
                 <small>Released January 2026. Contains 4 tracks: Sargassum | Ready For The Fall | Suffer In Silence | Here I Am.</small>
             </div>
-
             <h3>Featured Tracks</h3>
-            <div class="placeholder-box">
-             <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/album/7jZxYEhxU0zuyqPcu0D2Zp?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <div class="placeholder-box" style="padding:20px;">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/7jZxYEhxU0zuyqPcu0D2Zp?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </section>
 
-        <!-- LIVE & VIDEO SECTION -->
         <section id="live">
-            <h2>Live & Video</h2>
-            
+            <h2>Live &amp; Video</h2>
             <h3>Live Performance Video</h3>
             <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:8px; margin:20px 0;">
-                <iframe
-                    style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
-                    src="https://www.youtube.com/embed/cRNdQjr1ueA"
-                    title="All Points North – Live Performance"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen>
-                </iframe>
+                <iframe style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;" src="https://www.youtube.com/embed/cRNdQjr1ueA" title="All Points North – Live Performance" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-
-            <h3>Recent & Upcoming Shows</h3>
+            <h3>Recent &amp; Upcoming Shows</h3>
             <div class="placeholder-box">📅 No dates yet!</div>
-
             <h3>Live Set Details</h3>
             <ul>
                 <li><strong>Set Length:</strong> 30-60 minuten (flexibel)</li>
@@ -724,56 +176,31 @@
             </ul>
         </section>
 
-        <!-- STATS & METRICS -->
         <section id="stats">
-            <h2>Stats & Reach</h2>
+            <h2>Stats &amp; Reach</h2>
             <div class="stats">
-                <div class="stat-card">
-                    <span class="stat-number" id="spotify-listeners">100+</span>
-                    <span class="stat-label">Monthly Spotify Listeners</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number" id="social-followers">100+</span>
-                    <span class="stat-label">Social Media Followers</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number" id="shows-played">60+</span>
-                    <span class="stat-label">Shows Played</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number" id="streams">5000+</span>
-                    <span class="stat-label">Total Streams</span>
-                </div>
+                <div class="stat-card"><span class="stat-number" id="stat-spotify">500+</span><span class="stat-label">Monthly Spotify Listeners</span></div>
+                <div class="stat-card"><span class="stat-number" id="stat-social">800+</span><span class="stat-label">Social Media Followers</span></div>
+                <div class="stat-card"><span class="stat-number" id="stat-shows">15+</span><span class="stat-label">Shows Played</span></div>
+                <div class="stat-card"><span class="stat-number" id="stat-streams">5,000+</span><span class="stat-label">Total Streams</span></div>
             </div>
-
             <h3>Social Media Aanwezigheid</h3>
             <div class="contact-grid">
                 <div class="contact-item">
                     <strong>Instagram</strong>
                     <a href="https://www.instagram.com/allpointsnorth.band/" target="_blank">@allpointsnorth.band</a>
-                    <p style="margin-top: 10px; color: #888;">Dagelijkse updates, behind-the-scenes content</p>
+                    <p style="margin-top:10px; color:#888;">Dagelijkse updates, behind-the-scenes content</p>
                 </div>
                 <div class="contact-item">
                     <strong>Facebook</strong>
                     <a href="https://www.facebook.com/apnlive" target="_blank">/apnlive</a>
-                    <p style="margin-top: 10px; color: #888;">Show announcements, community engagement</p>
+                    <p style="margin-top:10px; color:#888;">Show announcements, community engagement</p>
                 </div>
             </div>
         </section>
 
-
-        <!-- PHOTOS — FIXED SECTION -->
         <section id="photos">
             <h2>Photos</h2>
-
-            <!--
-                FIX SUMMARY FOR PHOTO SECTION:
-                1. Filter buttons now correctly show/hide cards using classList toggle + !important
-                2. Lightbox script was truncated — fully restored with keyboard support (Esc, arrow keys)
-                3. data-index attributes removed from HTML; lightbox builds its own index from DOM at click time
-            -->
-
-            <!-- Filter bar -->
             <div class="photo-filter-bar">
                 <button class="filter-btn active" data-filter="all">All</button>
                 <button class="filter-btn" data-filter="live">Live</button>
@@ -781,155 +208,84 @@
             </div>
 
             <div class="photo-grid" id="photoGrid">
-
-                <!-- ── LIVE PHOTOS ── -->
-
+                <!-- LIVE -->
                 <div class="photo-card featured" data-category="live">
                     <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/007.JPG" alt="All Points North live – 007" loading="lazy">
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Live – All Points North</span>
-                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/007.JPG" download="APN-007.JPG" class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
+                    <div class="photo-overlay"><div class="photo-overlay-content"><span class="photo-caption">Live – All Points North</span><a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/007.JPG" download="APN-007.JPG" class="photo-download-btn">↓ Download</a></div></div>
                 </div>
-
                 <div class="photo-card" data-category="live">
                     <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/016.JPG" alt="All Points North live – 016" loading="lazy">
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Live – All Points North</span>
-                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/016.JPG" download="APN-016.JPG" class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
+                    <div class="photo-overlay"><div class="photo-overlay-content"><span class="photo-caption">Live – All Points North</span><a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/016.JPG" download="APN-016.JPG" class="photo-download-btn">↓ Download</a></div></div>
                 </div>
-
                 <div class="photo-card" data-category="live">
                     <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/018.JPG" alt="All Points North live – 018" loading="lazy">
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Live – All Points North</span>
-                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/018.JPG" download="APN-018.JPG" class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
+                    <div class="photo-overlay"><div class="photo-overlay-content"><span class="photo-caption">Live – All Points North</span><a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/018.JPG" download="APN-018.JPG" class="photo-download-btn">↓ Download</a></div></div>
                 </div>
-
                 <div class="photo-card" data-category="live">
                     <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/022.JPG" alt="All Points North live – 022" loading="lazy">
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Live – All Points North</span>
-                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/022.JPG" download="APN-022.JPG" class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
+                    <div class="photo-overlay"><div class="photo-overlay-content"><span class="photo-caption">Live – All Points North</span><a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/022.JPG" download="APN-022.JPG" class="photo-download-btn">↓ Download</a></div></div>
                 </div>
-
                 <div class="photo-card" data-category="live">
                     <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/023.JPG" alt="All Points North live – 023" loading="lazy">
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Live – All Points North</span>
-                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/023.JPG" download="APN-023.JPG" class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
+                    <div class="photo-overlay"><div class="photo-overlay-content"><span class="photo-caption">Live – All Points North</span><a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/023.JPG" download="APN-023.JPG" class="photo-download-btn">↓ Download</a></div></div>
                 </div>
-
                 <div class="photo-card" data-category="live">
                     <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/025.JPG" alt="All Points North live – 025" loading="lazy">
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Live – All Points North</span>
-                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/025.JPG" download="APN-025.JPG" class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
+                    <div class="photo-overlay"><div class="photo-overlay-content"><span class="photo-caption">Live – All Points North</span><a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/025.JPG" download="APN-025.JPG" class="photo-download-btn">↓ Download</a></div></div>
                 </div>
-
-                <!-- ── PROMO PHOTOS (2018 shoot) ── -->
-
+                <!-- PROMO -->
                 <div class="photo-card featured" data-category="promo">
                     <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0014-2.jpg" alt="All Points North – Promo 2018" loading="lazy">
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Promo – All Points North 2018</span>
-                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0014-2.jpg" download="APN-Promo-2018-0014-2.jpg" class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
+                    <div class="photo-overlay"><div class="photo-overlay-content"><span class="photo-caption">Promo – All Points North 2018</span><a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0014-2.jpg" download="APN-Promo-2018-0014-2.jpg" class="photo-download-btn">↓ Download</a></div></div>
                 </div>
-
                 <div class="photo-card" data-category="promo">
                     <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0014.jpg" alt="All Points North – Promo 2018 #0014" loading="lazy">
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Promo – All Points North 2018</span>
-                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0014.jpg" download="APN-Promo-2018-0014.jpg" class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
+                    <div class="photo-overlay"><div class="photo-overlay-content"><span class="photo-caption">Promo – All Points North 2018</span><a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0014.jpg" download="APN-Promo-2018-0014.jpg" class="photo-download-btn">↓ Download</a></div></div>
                 </div>
-
                 <div class="photo-card" data-category="promo">
                     <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0310.jpg" alt="All Points North – Promo 2018 #0310" loading="lazy">
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Promo – All Points North 2018</span>
-                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0310.jpg" download="APN-Promo-2018-0310.jpg" class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
+                    <div class="photo-overlay"><div class="photo-overlay-content"><span class="photo-caption">Promo – All Points North 2018</span><a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0310.jpg" download="APN-Promo-2018-0310.jpg" class="photo-download-btn">↓ Download</a></div></div>
                 </div>
-
                 <div class="photo-card" data-category="promo">
                     <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0335.jpg" alt="All Points North – Promo 2018 #0335" loading="lazy">
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Promo – All Points North 2018</span>
-                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0335.jpg" download="APN-Promo-2018-0335.jpg" class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
+                    <div class="photo-overlay"><div class="photo-overlay-content"><span class="photo-caption">Promo – All Points North 2018</span><a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0335.jpg" download="APN-Promo-2018-0335.jpg" class="photo-download-btn">↓ Download</a></div></div>
                 </div>
-
                 <div class="photo-card" data-category="promo">
                     <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0341.jpg" alt="All Points North – Promo 2018 #0341" loading="lazy">
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Promo – All Points North 2018</span>
-                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0341.jpg" download="APN-Promo-2018-0341.jpg" class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
+                    <div class="photo-overlay"><div class="photo-overlay-content"><span class="photo-caption">Promo – All Points North 2018</span><a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/All_Points_North_Promo_2018-0341.jpg" download="APN-Promo-2018-0341.jpg" class="photo-download-btn">↓ Download</a></div></div>
                 </div>
-
                 <div class="photo-card" data-category="promo">
                     <img src="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/facebook%20profiel%20square%20-%201.jpg" alt="All Points North – Profile Photo" loading="lazy">
-                    <div class="photo-overlay">
-                        <div class="photo-overlay-content">
-                            <span class="photo-caption">Promo – All Points North</span>
-                            <a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/facebook%20profiel%20square%20-%201.jpg" download="APN-Profile.jpg" class="photo-download-btn">↓ Download</a>
-                        </div>
-                    </div>
+                    <div class="photo-overlay"><div class="photo-overlay-content"><span class="photo-caption">Promo – All Points North</span><a href="https://raw.githubusercontent.com/allpointsnorthband-art/.github.io/main/photos/facebook%20profiel%20square%20-%201.jpg" download="APN-Profile.jpg" class="photo-download-btn">↓ Download</a></div></div>
                 </div>
+            </div>
 
-            </div><!-- /photo-grid -->
+            <!--
+                FIX – Download All Photos (ZIP):
+                Correct GitHub archive URL format:
+                https://github.com/{owner}/{repo}/archive/refs/heads/{branch}.zip
 
-            <!-- Bulk download bar -->
-            <!-- FIX: "Request Hi-Res" now uses a plain mailto: link to allpointsnorth.band@gmail.com -->
-            <!-- FIX: ZIP download points to the GitHub archive (works when repo is public) -->
+                FIX – Request Hi-Res:
+                Clean mailto: link routing to allpointsnorth.band@gmail.com
+                with pre-filled subject and body, properly URI-encoded.
+            -->
             <div class="bulk-download-bar">
                 <p><strong>Press use:</strong> All photos are free to use for editorial and promotional purposes. Credit: All Points North.</p>
                 <div class="bulk-btns">
                     <a href="https://github.com/allpointsnorthband-art/allpointsnorthband-art.github.io/archive/refs/heads/main.zip"
-                       class="bulk-btn"
-                       target="_blank"
-                       rel="noopener">↓ Download All Photos (ZIP)</a>
-                    <a href="mailto:allpointsnorth.band@gmail.com?subject=Hi-Res%20Photo%20Request%20-%20All%20Points%20North&body=Hi%2C%0A%0AI%20would%20like%20to%20request%20hi-resolution%20photos%20of%20All%20Points%20North.%0A%0AName%3A%0APublication%2FContext%3A%0APhotos%20needed%3A%0A%0AThanks!"
+                       class="bulk-btn" target="_blank" rel="noopener noreferrer">↓ Download All Photos (ZIP)</a>
+                    <a href="mailto:allpointsnorth.band@gmail.com?subject=Hi-Res%20Photo%20Request%20%E2%80%93%20All%20Points%20North&body=Hi%2C%0A%0AI%20would%20like%20to%20request%20hi-resolution%20photos%20of%20All%20Points%20North.%0A%0AName%3A%20%0APublication%20%2F%20Context%3A%20%0APhotos%20needed%3A%20%0A%0AThanks!"
                        class="bulk-btn secondary">📧 Request Hi-Res</a>
                 </div>
             </div>
         </section>
 
-        <!-- Lightbox — FULLY RESTORED (was truncated in original) -->
+        <!-- LIGHTBOX -->
         <div class="lightbox" id="lightbox">
             <div class="lightbox-inner">
                 <button class="lightbox-close" id="lightboxClose" aria-label="Close lightbox">✕</button>
-                <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
-                <button class="lightbox-nav next" id="lightboxNext" aria-label="Next photo">›</button>
+                <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous photo">&#8249;</button>
+                <button class="lightbox-nav next" id="lightboxNext" aria-label="Next photo">&#8250;</button>
                 <img src="" alt="" class="lightbox-img" id="lightboxImg">
                 <div class="lightbox-caption">
                     <span class="lightbox-caption-text" id="lightboxCaption"></span>
@@ -938,12 +294,10 @@
             </div>
         </div>
 
-        <!-- TECHNICAL RIDER -->
         <section id="technical">
             <h2>Technical Rider</h2>
-
             <h3>Input List (Priklijst)</h3>
-            <div style="overflow-x:auto; margin: 20px 0;">
+            <div style="overflow-x:auto; margin:20px 0;">
                 <table style="width:100%; border-collapse:collapse; font-size:0.92em;">
                     <thead>
                         <tr style="background:rgba(255,107,53,0.15); color:#ff6b35;">
@@ -954,57 +308,26 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">1</td><td style="padding:9px 14px;">Kick</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">2</td><td style="padding:9px 14px;">Snare 1</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">3</td><td style="padding:9px 14px;">Snare 2</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">4</td><td style="padding:9px 14px;">Hi-Hat</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">5</td><td style="padding:9px 14px;">Tom 1</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">6</td><td style="padding:9px 14px;">Tom 2</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">7</td><td style="padding:9px 14px;">Tom 3</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">8</td><td style="padding:9px 14px;">Overhead 1</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">9</td><td style="padding:9px 14px;">Overhead 2</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">10</td><td style="padding:9px 14px;">Gitaar 1</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">11</td><td style="padding:9px 14px;">Gitaar 2</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">12</td><td style="padding:9px 14px;">Bas</td><td style="padding:9px 14px; color:#f7931e;">1 DI</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">13</td><td style="padding:9px 14px;">Zang 1 (zanger)</td><td style="padding:9px 14px; color:#f7931e;">1 DI</td><td style="padding:9px 14px; color:#888;">I.v.m. zangeffect (TC Helicon Play) extra mic kabel nodig</td>
-                        </tr>
-                        <tr style="background:rgba(255,255,255,0.02); border-bottom:1px solid rgba(255,255,255,0.05);">
-                            <td style="padding:9px 14px; color:#888;">14</td><td style="padding:9px 14px;">Zang 2 (gitarist)</td><td style="padding:9px 14px; color:#f7931e;">1 DI</td><td style="padding:9px 14px; color:#888;"></td>
-                        </tr>
-                        <tr>
-                            <td style="padding:9px 14px; color:#888;">15</td><td style="padding:9px 14px;">Zang 3 (drummer)</td><td style="padding:9px 14px; color:#f7931e;">1 Mic</td><td style="padding:9px 14px; color:#888;">Eigen microfoonstandaard aan drumrack</td>
-                        </tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">1</td><td style="padding:9px 14px;">Kick</td><td style="padding:9px 14px;color:#f7931e;">1 Mic</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr style="background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">2</td><td style="padding:9px 14px;">Snare 1</td><td style="padding:9px 14px;color:#f7931e;">1 Mic</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">3</td><td style="padding:9px 14px;">Snare 2</td><td style="padding:9px 14px;color:#f7931e;">1 Mic</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr style="background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">4</td><td style="padding:9px 14px;">Hi-Hat</td><td style="padding:9px 14px;color:#f7931e;">1 Mic</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">5</td><td style="padding:9px 14px;">Tom 1</td><td style="padding:9px 14px;color:#f7931e;">1 Mic</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr style="background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">6</td><td style="padding:9px 14px;">Tom 2</td><td style="padding:9px 14px;color:#f7931e;">1 Mic</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">7</td><td style="padding:9px 14px;">Tom 3</td><td style="padding:9px 14px;color:#f7931e;">1 Mic</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr style="background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">8</td><td style="padding:9px 14px;">Overhead 1</td><td style="padding:9px 14px;color:#f7931e;">1 Mic</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">9</td><td style="padding:9px 14px;">Overhead 2</td><td style="padding:9px 14px;color:#f7931e;">1 Mic</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr style="background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">10</td><td style="padding:9px 14px;">Gitaar 1</td><td style="padding:9px 14px;color:#f7931e;">1 Mic</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">11</td><td style="padding:9px 14px;">Gitaar 2</td><td style="padding:9px 14px;color:#f7931e;">1 Mic</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr style="background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">12</td><td style="padding:9px 14px;">Bas</td><td style="padding:9px 14px;color:#f7931e;">1 DI</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr style="border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">13</td><td style="padding:9px 14px;">Zang 1 (zanger)</td><td style="padding:9px 14px;color:#f7931e;">1 DI</td><td style="padding:9px 14px;color:#888;">I.v.m. zangeffect (TC Helicon Play) extra mic kabel nodig</td></tr>
+                        <tr style="background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.05);"><td style="padding:9px 14px;color:#888;">14</td><td style="padding:9px 14px;">Zang 2 (gitarist)</td><td style="padding:9px 14px;color:#f7931e;">1 DI</td><td style="padding:9px 14px;color:#888;"></td></tr>
+                        <tr><td style="padding:9px 14px;color:#888;">15</td><td style="padding:9px 14px;">Zang 3 (drummer)</td><td style="padding:9px 14px;color:#f7931e;">1 Mic</td><td style="padding:9px 14px;color:#888;">Eigen microfoonstandaard aan drumrack</td></tr>
                     </tbody>
                 </table>
             </div>
 
-            <h3>Contact & Boekingen</h3>
-            <!-- FIX: Plain email/phone — no Cloudflare obfuscation needed when hosted yourself -->
+            <h3>Contact &amp; Boekingen</h3>
             <div class="contact-item" style="margin-bottom:30px;">
                 <strong>Mathijs van Donzel</strong>
                 <p style="color:#ccc;">Deken de Louwstraat 3, 5401 BM Uden</p>
@@ -1013,170 +336,151 @@
             </div>
 
             <h3>Download Tech Rider</h3>
-            <!--
-                FIX: Tech rider downloads.
-                The files at files/APN_Technische_rider_docx.pdf and files/Technische_Rider_2026.xlsx
-                must exist in the /files/ folder of the GitHub repo for these links to work.
-                Until uploaded, buttons show a tooltip explaining the file is coming soon.
-                Replace class="download-btn unavailable" with class="download-btn" and restore href
-                once the files are committed to the repo.
-            -->
             <div class="download-section">
-                <p style="margin-bottom: 20px; color: #ccc;">Volledige technische rider beschikbaar als PDF en XLSX:</p>
-                <a href="files/APN_Technische_rider_docx.pdf"
-                   download
-                   class="download-btn"
-                   id="techRiderPdfBtn">↓ Download Tech Rider (PDF)</a>
-                <a href="files/Technische_Rider_2026.xlsx"
-                   download
-                   class="download-btn"
-                   id="techRiderXlsxBtn">↓ Download Tech Rider (XLSX)</a>
-                <p style="margin-top:16px; color:#666; font-size:0.85em;" id="techRiderNote" style="display:none;">
-                    ⚠️ Bestanden nog niet geüpload. Voeg <code>files/APN_Technische_rider_docx.pdf</code> en <code>files/Technische_Rider_2026.xlsx</code> toe aan de GitHub repo om de downloads te activeren.
+                <p style="margin-bottom:20px; color:#ccc;">Volledige technische rider beschikbaar als PDF en XLSX:</p>
+                <a href="files/APN_Technische_rider_docx.pdf" download class="download-btn" id="techRiderPdfBtn">↓ Download Tech Rider (PDF)</a>
+                <a href="files/Technische_Rider_2026.xlsx" download class="download-btn" id="techRiderXlsxBtn">↓ Download Tech Rider (XLSX)</a>
+                <p style="margin-top:16px; color:#666; font-size:0.85em; display:none;" id="techRiderNote">
+                    ⚠️ Bestanden nog niet geüpload. Voeg <code style="background:rgba(255,107,53,0.1);color:#ff6b35;padding:2px 6px;border-radius:3px;">files/APN_Technische_rider_docx.pdf</code> en <code style="background:rgba(255,107,53,0.1);color:#ff6b35;padding:2px 6px;border-radius:3px;">files/Technische_Rider_2026.xlsx</code> toe aan de GitHub repo.
                 </p>
             </div>
         </section>
 
-        <!-- CONTACT -->
-        <!-- FIX: All contact emails use plain mailto: links -->
         <section id="contact">
-            <h2>Contact & Booking</h2>
+            <h2>Contact &amp; Booking</h2>
             <div class="contact-grid">
                 <div class="contact-item">
                     <strong>Booking Inquiries</strong>
-                    <a href="mailto:allpointsnorth.band@gmail.com?subject=Booking%20Inquiry%20-%20All%20Points%20North">allpointsnorth.band@gmail.com</a>
-                    <p style="margin-top: 10px; color: #888;">Voor show bookings, tour support, festival slots</p>
+                    <a href="mailto:allpointsnorth.band@gmail.com?subject=Booking%20Inquiry%20%E2%80%93%20All%20Points%20North">allpointsnorth.band@gmail.com</a>
+                    <p style="margin-top:10px; color:#888;">Voor show bookings, tour support, festival slots</p>
                 </div>
                 <div class="contact-item">
-                    <strong>Press & Media</strong>
-                    <a href="mailto:allpointsnorth.band@gmail.com?subject=Press%20Inquiry%20-%20All%20Points%20North">allpointsnorth.band@gmail.com</a>
-                    <p style="margin-top: 10px; color: #888;">Interviews, reviews, promotional materials</p>
+                    <strong>Press &amp; Media</strong>
+                    <a href="mailto:allpointsnorth.band@gmail.com?subject=Press%20Inquiry%20%E2%80%93%20All%20Points%20North">allpointsnorth.band@gmail.com</a>
+                    <p style="margin-top:10px; color:#888;">Interviews, reviews, promotional materials</p>
                 </div>
                 <div class="contact-item">
                     <strong>General Contact</strong>
                     <a href="mailto:allpointsnorth.band@gmail.com">allpointsnorth.band@gmail.com</a>
-                    <p style="margin-top: 10px; color: #888;">Algemene vragen, collaboration inquiries</p>
+                    <p style="margin-top:10px; color:#888;">Algemene vragen, collaboration inquiries</p>
                 </div>
                 <div class="contact-item">
                     <strong>Management</strong>
-                    <p style="color: #ccc;">Jarno van Hurne / Mathijs van Donzel</p>
+                    <p style="color:#ccc;">Jarno van Hurne / Mathijs van Donzel</p>
                     <a href="tel:+31622702272">+31 622 702 272</a>
-                    <p style="margin-top: 10px; color: #888;">Direct contact voor urgente zaken</p>
+                    <p style="margin-top:10px; color:#888;">Direct contact voor urgente zaken</p>
                 </div>
             </div>
-            <h3 style="margin-top: 40px;">Response Time</h3>
-            <p style="color: #ccc;">We streven ernaar om binnen 24-48 uur te reageren op alle inquiries. Voor urgente bookings, bel direct.</p>
+            <h3 style="margin-top:40px;">Response Time</h3>
+            <p style="color:#ccc;">We streven ernaar om binnen 24-48 uur te reageren op alle inquiries. Voor urgente bookings, bel direct.</p>
         </section>
     </div>
 
     <footer>
         <p>&copy; 2026 All Points North. All rights reserved.</p>
-        <p style="margin-top: 10px; font-size: 0.9em;">Progressive Rock from the Netherlands</p>
-        <p style="margin-top: 20px;">
-            <a href="https://www.instagram.com/allpointsnorth.band/" style="color: #ff6b35; text-decoration: none; margin: 0 10px;">Instagram</a> |
-            <a href="https://www.facebook.com/apnlive" style="color: #ff6b35; text-decoration: none; margin: 0 10px;">Facebook</a> |
-            <a href="https://open.spotify.com/artist/02lo7GheOKHi4dcjFhh46B" style="color: #ff6b35; text-decoration: none; margin: 0 10px;">Spotify</a> |
-            <a href="https://allpointsnorth.bandcamp.com" style="color: #ff6b35; text-decoration: none; margin: 0 10px;">Bandcamp</a>
+        <p style="margin-top:10px; font-size:0.9em;">Progressive Rock from the Netherlands</p>
+        <p style="margin-top:20px;">
+            <a href="https://www.instagram.com/allpointsnorth.band/" style="color:#ff6b35;text-decoration:none;margin:0 10px;">Instagram</a> |
+            <a href="https://www.facebook.com/apnlive" style="color:#ff6b35;text-decoration:none;margin:0 10px;">Facebook</a> |
+            <a href="https://open.spotify.com/artist/02lo7GheOKHi4dcjFhh46B" style="color:#ff6b35;text-decoration:none;margin:0 10px;">Spotify</a> |
+            <a href="https://allpointsnorth.bandcamp.com" style="color:#ff6b35;text-decoration:none;margin:0 10px;">Bandcamp</a>
         </p>
     </footer>
 
     <script>
-        // ─────────────────────────────────────────────
-        // Stats counter animation
-        // ─────────────────────────────────────────────
-        function animateValue(id, start, end, duration) {
-            const obj = document.getElementById(id);
-            if (!obj) return;
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
-                if (progress < 1) window.requestAnimationFrame(step);
-            };
-            window.requestAnimationFrame(step);
+    // =============================================================
+    // FIX 1: Stats counter – preserves "+" suffix after animation
+    // =============================================================
+    function animateCounter(id, end, duration, suffix) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        var startTime = null;
+        function step(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var value = Math.floor(progress * end);
+            el.textContent = value.toLocaleString() + suffix;
+            if (progress < 1) requestAnimationFrame(step);
         }
-        window.addEventListener('load', () => {
-            animateValue('spotify-listeners', 0, 500, 2000);
-            animateValue('social-followers', 0, 800, 2000);
-            animateValue('shows-played', 0, 15, 1500);
-            animateValue('streams', 0, 5000, 2500);
-        });
+        requestAnimationFrame(step);
+    }
+    window.addEventListener('load', function() {
+        animateCounter('stat-spotify', 500,  2000, '+');
+        animateCounter('stat-social',  800,  2000, '+');
+        animateCounter('stat-shows',    15,  1500, '+');
+        animateCounter('stat-streams', 5000, 2500, '+');
+    });
 
-        // ─────────────────────────────────────────────
-        // Smooth scroll for anchor links
-        // ─────────────────────────────────────────────
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const target = this.getAttribute('href');
-                if (target && target !== '#') {
-                    e.preventDefault();
-                    const el = document.querySelector(target);
-                    if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+    // =============================================================
+    // Smooth scroll for anchor links
+    // =============================================================
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            var target = this.getAttribute('href');
+            if (target && target !== '#') {
+                e.preventDefault();
+                var el = document.querySelector(target);
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }
         });
+    });
 
-        // ─────────────────────────────────────────────
-        // FIX: Photo filter
-        // Toggle .hidden class; CSS uses !important to guarantee display:none
-        // overrides any other display rules (incl. grid-column on featured cards)
-        // ─────────────────────────────────────────────
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Update active button
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    // =============================================================
+    // FIX 2: Photo filter
+    // Root cause: toggling a CSS class can lose to grid-column:span 2
+    // in some browser rendering paths. Fix: set card.style.display
+    // directly via JS — inline styles always win over stylesheet rules.
+    // =============================================================
+    (function() {
+        var cards = document.querySelectorAll('.photo-card');
+        document.querySelectorAll('.filter-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
                 btn.classList.add('active');
-
-                const filter = btn.dataset.filter;
-
-                document.querySelectorAll('.photo-card').forEach(card => {
-                    const match = filter === 'all' || card.dataset.category === filter;
-                    if (match) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
+                var filter = btn.getAttribute('data-filter');
+                cards.forEach(function(card) {
+                    var match = filter === 'all' || card.getAttribute('data-category') === filter;
+                    card.style.display = match ? '' : 'none';
                 });
             });
         });
+    })();
 
-        // ─────────────────────────────────────────────
-        // FIX: Lightbox — fully restored (original was truncated at addEventL...)
-        // Also fixed: keyboard navigation (Esc, ←, →)
-        // ─────────────────────────────────────────────
-        const lightbox     = document.getElementById('lightbox');
-        const lightboxImg  = document.getElementById('lightboxImg');
-        const lightboxCap  = document.getElementById('lightboxCaption');
-        const lightboxDl   = document.getElementById('lightboxDownload');
-
-        let currentIndex = 0;
-        let visibleCards  = [];
+    // =============================================================
+    // FIX 3: Lightbox – fully working with keyboard nav
+    // Uses card.style.display !== 'none' to match the filter logic above
+    // =============================================================
+    (function() {
+        var lightbox    = document.getElementById('lightbox');
+        var lightboxImg = document.getElementById('lightboxImg');
+        var lightboxCap = document.getElementById('lightboxCaption');
+        var lightboxDl  = document.getElementById('lightboxDownload');
+        var currentIndex = 0;
+        var visibleCards = [];
 
         function getVisibleCards() {
-            return [...document.querySelectorAll('.photo-card')].filter(c => !c.classList.contains('hidden'));
+            return Array.from(document.querySelectorAll('.photo-card')).filter(function(c) {
+                return c.style.display !== 'none';
+            });
         }
 
         function updateLightbox() {
-            const card = visibleCards[currentIndex];
+            var card = visibleCards[currentIndex];
             if (!card) return;
-            const img     = card.querySelector('img');
-            const caption = card.querySelector('.photo-caption');
-            const dlBtn   = card.querySelector('.photo-download-btn');
-            if (img) {
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt || '';
-            }
+            var img     = card.querySelector('img');
+            var caption = card.querySelector('.photo-caption');
+            var dlBtn   = card.querySelector('.photo-download-btn');
+            if (img) { lightboxImg.src = img.src; lightboxImg.alt = img.alt || ''; }
             lightboxCap.textContent = caption ? caption.textContent.trim() : '';
             if (dlBtn) {
                 lightboxDl.href     = dlBtn.href;
-                lightboxDl.download = dlBtn.download || '';
+                lightboxDl.download = dlBtn.getAttribute('download') || '';
             }
         }
 
         function openLightbox(index) {
             visibleCards = getVisibleCards();
-            currentIndex = index;
+            currentIndex = Math.max(0, Math.min(index, visibleCards.length - 1));
             updateLightbox();
             lightbox.classList.add('open');
             document.body.style.overflow = 'hidden';
@@ -1199,12 +503,11 @@
             updateLightbox();
         }
 
-        // Open lightbox when clicking a card (but not the download button)
-        document.querySelectorAll('.photo-card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                if (e.target.closest('.photo-download-btn')) return; // let download work normally
+        document.querySelectorAll('.photo-card').forEach(function(card) {
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.photo-download-btn')) return;
                 visibleCards = getVisibleCards();
-                const idx = visibleCards.indexOf(card);
+                var idx = visibleCards.indexOf(card);
                 if (idx > -1) openLightbox(idx);
             });
         });
@@ -1213,47 +516,45 @@
         document.getElementById('lightboxPrev').addEventListener('click', showPrev);
         document.getElementById('lightboxNext').addEventListener('click', showNext);
 
-        // Close on backdrop click
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
-        });
+        lightbox.addEventListener('click', function(e) { if (e.target === lightbox) closeLightbox(); });
 
-        // FIX: Keyboard navigation (was missing in original)
-        document.addEventListener('keydown', (e) => {
+        document.addEventListener('keydown', function(e) {
             if (!lightbox.classList.contains('open')) return;
-            if (e.key === 'Escape')      closeLightbox();
-            if (e.key === 'ArrowLeft')   showPrev();
-            if (e.key === 'ArrowRight')  showNext();
+            if (e.key === 'Escape')    closeLightbox();
+            if (e.key === 'ArrowLeft') showPrev();
+            if (e.key === 'ArrowRight') showNext();
         });
+    })();
 
-        // ─────────────────────────────────────────────
-        // FIX: Tech rider download check
-        // Detect 404s and show a warning note if files aren't uploaded yet
-        // ─────────────────────────────────────────────
-        function checkFileExists(url, btnId, noteId) {
-            fetch(url, { method: 'HEAD' })
-                .then(res => {
-                    if (!res.ok) {
-                        const btn = document.getElementById(btnId);
-                        if (btn) {
-                            btn.classList.add('unavailable');
-                            btn.setAttribute('data-tooltip', 'Bestand nog niet geüpload in de repo');
-                            btn.addEventListener('click', e => e.preventDefault());
-                        }
-                        const note = document.getElementById('techRiderNote');
-                        if (note) note.style.display = 'block';
-                    }
-                })
-                .catch(() => {
-                    // Network error or CORS — silently ignore, let the download attempt naturally
-                });
+    // =============================================================
+    // FIX 4: Tech rider file availability check
+    // Only runs over HTTP(S); silently skips on file:// protocol
+    // =============================================================
+    (function() {
+        if (location.protocol === 'file:') return;
+
+        function markUnavailable(btnId) {
+            var btn = document.getElementById(btnId);
+            if (btn) {
+                btn.classList.add('unavailable');
+                btn.setAttribute('data-tooltip', 'Bestand nog niet geüpload in de repo');
+                btn.addEventListener('click', function(e) { e.preventDefault(); });
+            }
+            var note = document.getElementById('techRiderNote');
+            if (note) note.style.display = 'block';
         }
 
-        // Only run the check when the page loads (non-blocking)
-        window.addEventListener('load', () => {
-            checkFileExists('files/APN_Technische_rider_docx.pdf',  'techRiderPdfBtn',  'techRiderNote');
-            checkFileExists('files/Technische_Rider_2026.xlsx',     'techRiderXlsxBtn', 'techRiderNote');
+        function checkFile(url, btnId) {
+            fetch(url, { method: 'HEAD' })
+                .then(function(res) { if (!res.ok) markUnavailable(btnId); })
+                .catch(function() { /* CORS / network – let download try naturally */ });
+        }
+
+        window.addEventListener('load', function() {
+            checkFile('files/APN_Technische_rider_docx.pdf', 'techRiderPdfBtn');
+            checkFile('files/Technische_Rider_2026.xlsx',    'techRiderXlsxBtn');
         });
+    })();
     </script>
 </body>
 </html>
