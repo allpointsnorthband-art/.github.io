@@ -639,8 +639,8 @@
             <div class="music-links">
                 <a href="https://open.spotify.com/artist/02lo7GheOKHi4dcjFhh46B" target="_blank" class="music-link">🎵 Spotify</a>
                 <a href="https://allpointsnorth.bandcamp.com" target="_blank" class="music-link">♪ Bandcamp</a>
-                <a href="https://music.apple.com/us/artist/all-points-north/1671344314" class="music-link" onclick="alert('https://music.apple.com/us/artist/all-points-north/1671344314'); return false;">🍎 Apple Music</a>
-                <a href="https://www.youtube.com/channel/UC21YAJsZDA_rvj9bPUkJR_A" class="music-link" onclick="alert('https://www.youtube.com/channel/UC21YAJsZDA_rvj9bPUkJR_A'); return false;">▶ YouTube</a>
+                <a href="https://music.apple.com/us/artist/all-points-north/1671344314" target="_blank" class="music-link">🍎 Apple Music</a>
+                <a href="https://www.youtube.com/channel/UC21YAJsZDA_rvj9bPUkJR_A" target="_blank" class="music-link">▶ YouTube</a>
             </div>
 
             <h3>Laatste Releases</h3>
@@ -979,7 +979,7 @@
                 <strong>Mathijs van Donzel</strong>
                 <p style="color:#ccc;">Deken de Louwstraat 3, 5401 BM Uden</p>
                 <a href="tel:0645894749">0645894749</a> &nbsp;·&nbsp;
-                <a href="mailto:allpointsnorth.band@gmail.com">allpointsnorth.band@gmail.com</a>
+                <a href="/cdn-cgi/l/email-protection#1a7b76766a7573746e697475686e7234787b747e5a7d777b737634797577"><span class="__cf_email__" data-cfemail="34555858445b5d5a40475a5b46405c1a56555a50745359555d581a575b59">[email&#160;protected]</span></a>
             </div>
 
             <h3>Download Tech Rider</h3>
@@ -996,17 +996,17 @@
             <div class="contact-grid">
                 <div class="contact-item">
                     <strong>Booking Inquiries</strong>
-                    <a href="mailto:allpointsnorth.band@gmail.com">allpointsnorth.band@gmail.com</a>
+                    <a href="/cdn-cgi/l/email-protection#29484545594640475d5a47465b5d41074b48474d694e44484045074a4644"><span class="__cf_email__" data-cfemail="89e8e5e5f9e6e0e7fdfae7e6fbfde1a7ebe8e7edc9eee4e8e0e5a7eae6e4">[email&#160;protected]</span></a>
                     <p style="margin-top: 10px; color: #888;">Voor show bookings, tour support, festival slots</p>
                 </div>
                 <div class="contact-item">
                     <strong>Press & Media</strong>
-                    <a href="mailto:allpointsnorth.band@gmail.com">allpointsnorth.band@gmail.com</a>
+                    <a href="/cdn-cgi/l/email-protection#5c3d30302c333532282f32332e2834723e3d32381c3b313d3530723f3331"><span class="__cf_email__" data-cfemail="6b0a07071b0402051f180504191f0345090a050f2b0c060a020745080406">[email&#160;protected]</span></a>
                     <p style="margin-top: 10px; color: #888;">Interviews, reviews, promotional materials</p>
                 </div>
                 <div class="contact-item">
                     <strong>General Contact</strong>
-                   <a href="mailto:allpointsnorth.band@gmail.com">allpointsnorth.band@gmail.com</a>
+                   <a href="/cdn-cgi/l/email-protection#8eefe2e2fee1e7e0fafde0e1fcfae6a0ecefe0eacee9e3efe7e2a0ede1e3"><span class="__cf_email__" data-cfemail="b8d9d4d4c8d7d1d6cccbd6d7caccd096dad9d6dcf8dfd5d9d1d496dbd7d5">[email&#160;protected]</span></a>
                     <p style="margin-top: 10px; color: #888;">Algemene vragen, collaboration inquiries</p>
                 </div>
                 <div class="contact-item">
@@ -1032,7 +1032,7 @@
         </p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // ── Stats animation ──
         function animateValue(id, start, end, duration) {
             const obj = document.getElementById(id);
@@ -1066,20 +1066,14 @@
         });
 
         // ── Photo filter ──
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const photoCards = document.querySelectorAll('.photo-card');
-
-        filterBtns.forEach(btn => {
+        document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 const filter = btn.dataset.filter;
-                photoCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = '';
-                    } else {
-                        card.style.display = 'none';
-                    }
+                document.querySelectorAll('.photo-card').forEach(card => {
+                    const match = filter === 'all' || card.dataset.category === filter;
+                    card.style.display = match ? 'block' : 'none';
                 });
             });
         });
@@ -1123,7 +1117,7 @@
             lightboxDownload.href = dlBtn ? dlBtn.href : '#';
         }
 
-        photoCards.forEach((card, i) => {
+        document.querySelectorAll('.photo-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 if (e.target.closest('.photo-download-btn')) return;
                 visibleCards = getVisibleCards();
@@ -1137,21 +1131,4 @@
             currentIndex = (currentIndex - 1 + visibleCards.length) % visibleCards.length;
             updateLightbox();
         });
-        document.getElementById('lightboxNext').addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % visibleCards.length;
-            updateLightbox();
-        });
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) closeLightbox();
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (!lightbox.classList.contains('open')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') { currentIndex = (currentIndex - 1 + visibleCards.length) % visibleCards.length; updateLightbox(); }
-            if (e.key === 'ArrowRight') { currentIndex = (currentIndex + 1) % visibleCards.length; updateLightbox(); }
-        });
-    </script>
-</body>
-</html>
+        document.getElementById('lightboxNext').addEventL
