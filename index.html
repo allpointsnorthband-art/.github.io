@@ -583,6 +583,11 @@
             .photo-grid { grid-template-columns: 1fr; }
             .photo-card.featured { grid-column: span 1; aspect-ratio: 4/3; }
         }
+
+        /* Hide cards via class so grid display is preserved */
+        .photo-card.hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -1073,7 +1078,7 @@
                 const filter = btn.dataset.filter;
                 document.querySelectorAll('.photo-card').forEach(card => {
                     const match = filter === 'all' || card.dataset.category === filter;
-                    card.style.display = match ? 'block' : 'none';
+                    card.classList.toggle('hidden', !match);
                 });
             });
         });
@@ -1087,7 +1092,7 @@
         let visibleCards = [];
 
         function getVisibleCards() {
-            return [...document.querySelectorAll('.photo-card')].filter(c => c.style.display !== 'none');
+            return [...document.querySelectorAll('.photo-card')].filter(c => !c.classList.contains('hidden'));
         }
 
         function openLightbox(index) {
