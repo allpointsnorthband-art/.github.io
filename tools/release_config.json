@@ -1,0 +1,72 @@
+{
+  "band_name": "All Points North",
+  "email_to": "allpointsnorth.band@gmail.com",
+  "checklist": [
+    {
+      "time": "08:00",
+      "timezone": "CET",
+      "action": "Track is LIVE on Spotify! Post Instagram Reel now with track as audio. CTA: 'Save this track on Spotify'",
+      "platform": "Instagram"
+    },
+    {
+      "time": "08:05",
+      "timezone": "CET",
+      "action": "Post Instagram Story with Spotify link sticker: 'New single out now -- tap to save'",
+      "platform": "Instagram"
+    },
+    {
+      "time": "10:00",
+      "timezone": "CET",
+      "action": "Send newsletter via Mailchimp: 'Out now: [Track Name]' with Spotify link",
+      "platform": "Email"
+    },
+    {
+      "time": "12:00",
+      "timezone": "CET",
+      "action": "Post on Facebook with Spotify link and album art",
+      "platform": "Facebook"
+    },
+    {
+      "time": "14:00",
+      "timezone": "CET",
+      "action": "Post in r/progmetal and r/progrockmusic (check self-promotion rules first)",
+      "platform": "Reddit"
+    },
+    {
+      "time": "16:00",
+      "timezone": "CET",
+      "action": "Share to relevant Discord servers and forums (ProgArchives, etc.)",
+      "platform": "Discord/Forums"
+    },
+    {
+      "time": "18:00",
+      "timezone": "CET",
+      "action": "Instagram Story #2: behind-the-scenes of the track (writing process, studio clip)",
+      "platform": "Instagram"
+    },
+    {
+      "time": "+1d 09:00",
+      "timezone": "CET",
+      "action": "DAY 2: Check Spotify for Artists -- monitor saves, streams, skip rate, playlist adds",
+      "platform": "Spotify for Artists"
+    },
+    {
+      "time": "+1d 10:00",
+      "timezone": "CET",
+      "action": "DAY 2: Post thank-you Story or share a streaming milestone",
+      "platform": "Instagram"
+    },
+    {
+      "time": "+1d 11:00",
+      "timezone": "CET",
+      "action": "DAY 2: Submit to SubmitHub (blogs + playlists). Pitch 5-10 independent curators directly.",
+      "platform": "SubmitHub / DMs"
+    },
+    {
+      "time": "+1d 12:00",
+      "timezone": "CET",
+      "action": "DAY 2: Engage with every comment and DM from release day",
+      "platform": "All platforms"
+    }
+  ]
+}
