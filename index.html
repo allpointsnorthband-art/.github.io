@@ -820,10 +820,10 @@ function animateCounter(id, end, duration, suffix) {
 var statsObserver = new IntersectionObserver(function(entries) {
     entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-            animateCounter('stat-spotify', 150,  2000, '+');
+            animateCounter('stat-spotify', 72,  2000, '+');
             animateCounter('stat-social',  200,  2000, '+');
             animateCounter('stat-shows',    15,  1500, '+');
-            animateCounter('stat-streams', 3000, 2500, '+');
+            animateCounter('stat-streams', 1440, 2500, '+');
             statsObserver.disconnect();
         }
     });
