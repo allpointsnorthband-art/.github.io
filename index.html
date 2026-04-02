@@ -322,11 +322,19 @@
 
     .download-section { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px; }
 
-    .newsletter-form { display: flex; gap: 12px; max-width: 520px; margin-top: 24px; }
-    .newsletter-input { flex: 1; font-family: var(--font-mono); font-size: 0.78rem; padding: 14px 20px; background: var(--color-surface-2); border: 1px solid var(--color-border); border-radius: var(--radius-sm); color: var(--color-text-hi); outline: none; transition: border-color 0.2s; }
-    .newsletter-input::placeholder { color: var(--color-text-muted); }
-    .newsletter-input:focus { border-color: var(--color-accent-1); }
-    .newsletter-msg { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-accent-2); margin-top: 12px; display: none; }
+    #mc_embed_signup { background: transparent !important; color: var(--color-text); font-family: var(--font-mono) !important; max-width: 520px; margin-top: 24px; padding: 0 !important; }
+    #mc_embed_signup h2 { display: none; }
+    #mc_embed_signup .indicates-required { display: none; }
+    #mc_embed_signup .mc-field-group label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 8px; display: block; }
+    #mc_embed_signup .mc-field-group label .asterisk { color: var(--color-accent-1); }
+    #mc_embed_signup .mc-field-group input.email { width: 100% !important; font-family: var(--font-mono) !important; font-size: 0.78rem !important; padding: 14px 20px !important; background: var(--color-surface-2) !important; border: 1px solid var(--color-border) !important; border-radius: var(--radius-sm) !important; color: var(--color-text-hi) !important; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+    #mc_embed_signup .mc-field-group input.email::placeholder { color: var(--color-text-muted); }
+    #mc_embed_signup .mc-field-group input.email:focus { border-color: var(--color-accent-1) !important; }
+    #mc_embed_signup .button { font-family: var(--font-mono) !important; font-size: 0.7rem !important; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 14px 32px !important; background: var(--color-accent-1) !important; color: var(--color-text-inv) !important; border: none !important; border-radius: var(--radius-sm) !important; cursor: pointer; transition: all 0.25s ease; margin-top: 12px; }
+    #mc_embed_signup .button:hover { background: var(--color-accent-2) !important; transform: translateY(-2px); box-shadow: 0 8px 32px var(--color-accent-glow); }
+    #mc_embed_signup div.response { font-family: var(--font-mono); font-size: 0.72rem; color: var(--color-accent-2); margin-top: 12px; }
+    #mc_embed_signup #mce-error-response { color: #e85050; }
+    #mc_embed_signup .foot { padding: 0 !important; }
 
     @media (max-width: 900px) {
         .bio-layout { grid-template-columns: 1fr; }
@@ -681,17 +689,38 @@
             <div class="section-label">Stay Connected</div>
             <div class="section-title"><h2>Join the Mailing List</h2></div>
             <p style="max-width:560px; margin-bottom:8px;">Ontvang als eerste nieuwe muziek, show-aankondigingen en behind-the-scenes updates. Geen spam, alleen het belangrijke nieuws.</p>
-            <div id="mc-embedded-form">
-                <form class="newsletter-form" id="newsletterForm">
-                    <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="je@email.com" required>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
-                <p class="newsletter-msg" id="newsletterMsg"></p>
-                <p style="font-family:var(--font-mono); font-size:0.62rem; color:var(--color-text-muted); margin-top:16px; letter-spacing:0.08em;">
-                    <!-- SETUP: Replace this form with your Mailchimp embedded form code. -->
-                    <!-- Go to Mailchimp > Audience > Signup Forms > Embedded Forms > copy the HTML -->
-                    <!-- Paste it here, replacing the form above. Keep the styling classes. -->
-                </p>
+            <div id="mc_embed_shell">
+                <div id="mc_embed_signup">
+                    <form action="https://github.us9.list-manage.com/subscribe/post?u=a0276ed32b8b405009ca17eb4&amp;id=2c1a178538&amp;f_id=001cffe3f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                        <div id="mc_embed_signup_scroll">
+                            <div class="mc-field-group">
+                                <label for="mce-EMAIL">Email Address <span class="asterisk">*</span></label>
+                                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="" placeholder="je@email.com">
+                            </div>
+                            <div id="mce-responses" class="clear foot">
+                                <div class="response" id="mce-error-response" style="display: none;"></div>
+                                <div class="response" id="mce-success-response" style="display: none;"></div>
+                            </div>
+                            <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                <input type="text" name="b_a0276ed32b8b405009ca17eb4_2c1a178538" tabindex="-1" value="">
+                            </div>
+                            <div class="optionalParent">
+                                <div class="clear foot">
+                                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+                <script type="text/javascript">
+                (function($) {
+                    window.fnames = new Array();
+                    window.ftypes = new Array();
+                    fnames[0]='EMAIL'; ftypes[0]='email';
+                }(jQuery));
+                var $mcj = jQuery.noConflict(true);
+                </script>
             </div>
         </div>
     </div>
@@ -934,19 +963,6 @@ if (statsEl) statsObserver.observe(statsEl.closest('section'));
     });
 })();
 
-(function() {
-    var form = document.getElementById('newsletterForm');
-    var msg  = document.getElementById('newsletterMsg');
-    if (!form) return;
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var email = document.getElementById('newsletterEmail').value;
-        if (!email) return;
-        msg.textContent = 'Thanks for subscribing! Check your inbox for a welcome email.';
-        msg.style.display = 'block';
-        form.reset();
-    });
-})();
 
 document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
