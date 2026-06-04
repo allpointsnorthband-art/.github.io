@@ -42,9 +42,21 @@ def main() -> None:
         )
     )
 
-    artist = sp.artist(ARTIST_ID)
-    followers = artist.get("followers", {}).get("total", 0)
-    logger.info("Spotify followers: %d", followers)
+        try:
+        artist = sp.artist(ARTIST_ID)
+    except spotipy.SpotifyException as exc:
+        logger.warning(
+            "Spotify API unavailable (%s); keeping existing stats. "
+            "Likely the app owner's Spotify Premium has lapsed "
+            "(Feb 2026 Web API dev-mode requirement).",
+            exc,
+        )
+        return
+    except Exception as exc:  # network/transient
+        logger.warning("Could not reach Spotify (%s); keeping existing stats.", exc)
+        return
+
+    followers = artist.get("followers", {}).get("total", 0)    logger.info("Spotify followers: %d", followers)
 
     stream_estimate = max(followers * 20, 1000)
 
