@@ -42,7 +42,7 @@ def main() -> None:
         )
     )
 
-        try:
+    try:
         artist = sp.artist(ARTIST_ID)
     except spotipy.SpotifyException as exc:
         logger.warning(
@@ -56,7 +56,8 @@ def main() -> None:
         logger.warning("Could not reach Spotify (%s); keeping existing stats.", exc)
         return
 
-    followers = artist.get("followers", {}).get("total", 0)    logger.info("Spotify followers: %d", followers)
+    followers = artist.get("followers", {}).get("total", 0)
+    logger.info("Spotify followers: %d", followers)
 
     stream_estimate = max(followers * 20, 1000)
 
